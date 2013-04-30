@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-public class JoggingoAPI {
+public class PartnerAPI {
 
     // Logger Tag
     private static final String TAG = "Joggingo API";
@@ -95,21 +95,21 @@ public class JoggingoAPI {
             String DATE = "date";
     }
 
-    private static final String URL = "http://192.168.55.101/pt/";
+    private static final String URL = "";
 
     private static String userKey = null;
     private static String nonce = null;
 
     public static final String getURL() {
-            return JoggingoAPI.URL;
+            return PartnerAPI.URL;
     }
 
     public static final String getAppKey() {
-            return JoggingoAPI.ApplicationKey.VALUE;
+            return PartnerAPI.ApplicationKey.VALUE;
     }
 
     public static final void setUserKey(String userKey) {
-    	JoggingoAPI.userKey = userKey;
+    	PartnerAPI.userKey = userKey;
     }
 
     public static String getUserKey() {
@@ -117,35 +117,35 @@ public class JoggingoAPI {
     }
 
     public static void setUsername(String s) {
-    	JoggingoAPI.username = s;
+    	PartnerAPI.username = s;
     }
 
     public static String getUsername() {
-        return JoggingoAPI.username;
+        return PartnerAPI.username;
     }
 
     public static void setLocation(String s) {
-		JoggingoAPI.location = s;
+		PartnerAPI.location = s;
     }
 
     public static String getLocation() {
-        return JoggingoAPI.location;
+        return PartnerAPI.location;
     }
 
     public static void setNonce(String nonce) {
-    	JoggingoAPI.nonce = nonce;
+    	PartnerAPI.nonce = nonce;
     }
 
     public static String getNonce() {
-        return JoggingoAPI.nonce;
+        return PartnerAPI.nonce;
     }
 
     public static void setSearchNumber(int n) {
-    	JoggingoAPI.search = n;
+    	PartnerAPI.search = n;
     }
 
     public static int getSearchNumber() {
-        return JoggingoAPI.search;
+        return PartnerAPI.search;
     }
 
     /**
@@ -157,8 +157,8 @@ public class JoggingoAPI {
      */
     public static AsyncTask<Object, Void, ResponseCommand.ERROR_TYPE> requestURL(
                     String URL, ResponseCommand command) {
-            
-          return new URLRequest(command, "Request URL").execute(JoggingoAPI.getURL() + URL);
+       
+          return new URLRequest(command, "Request URL").execute(PartnerAPI.getURL() + URL);
 
     }
 

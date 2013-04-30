@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import fe.up.pt.partner.OffersPanelActivity;
-import fe.up.pt.partner.JoggingoAPI;
+import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -30,7 +30,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_seis); // Used for theme switching in samples
+		
 		super.onCreate(savedInstanceState);
 
 		// Create the list fragment and add it as our sole content.
@@ -44,53 +44,50 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 
 	public static class MainFragment_Results_Aux extends SherlockListFragment {
 
-		public String userToken;
-		public String useMode;
-		public String userID;
 		private ArrayList<String> titles;
-		private ArrayList<String> texts;
-		private ArrayList<String> images;
+		private ArrayList<String> items;
 		private ArrayList<String> ids;
-		private ArrayList<String> owners;
 		Bundle b;
 
 
 		private void searchIt(String URL) {
-
+			Log.d("url", URL);
 			getActivity().getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-			JoggingoAPI.requestURL(URL, new ResponseCommand() {
-
+			PartnerAPI.requestURL(URL, new ResponseCommand() {
+				
 				public void onResultReceived(Object... results) {
 
-					JSONArray offers = (JSONArray) results[0];
+					Log.d("json", results[0].toString());
+					JSONObject book = (JSONObject) results[0];
 
 					titles = new ArrayList<String>();
-					texts = new ArrayList<String>();
-					images = new ArrayList<String>();
+					items = new ArrayList<String>();
 					ids = new ArrayList<String>();
-					owners = new ArrayList<String>();
 
 					int i = 0;
-					while (!offers.isNull(i)) {
-						try {
+					//while (!books.isNull(i)) {
+					try {
+						
+						JSONArray items = book.getJSONArray("items");
+						while (!items.isNull(i)) {
 
-							JSONObject offer = offers.getJSONObject(i);
-							ids.add(offer.getString("id").toString());
-							titles.add(offer.getString("title").toString());
-							texts.add(offer.getString("description").toString());
-							images.add(offer.getString("media").toString());
-							owners.add(offer.getString("owner").toString());
-
-						} catch (JSONException e) {
-							e.printStackTrace();
+							JSONObject item = items.getJSONObject(i);
+							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
+							titles.add(volumeInfo.getString("title"));
+							i++;
 						}
-						i++;
+						
+
+					} catch (JSONException e) {
+						e.printStackTrace();
 					}
+					//i++;
+					//}
 
 					
-					setListAdapter(new ListAdapter(getActivity(), titles, texts, images,owners,0));
+					setListAdapter(new ListAdapter(getActivity(), titles));
 
 				}
 
@@ -98,10 +95,10 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 				public void onError(ERROR_TYPE error) {
 					
 					if(error.toString().equals(ERROR_TYPE.NETWORK))
-						Toast.makeText(getActivity(), JoggingoAPI.Strings.SERVER_CONNECTION,
+						Toast.makeText(getActivity(), PartnerAPI.Strings.SERVER_CONNECTION,
 								Toast.LENGTH_LONG).show();
 					else if(error.toString().equals(ERROR_TYPE.GENERAL))
-						Toast.makeText(getActivity(), JoggingoAPI.Strings.CHECK_CONNECTION,
+						Toast.makeText(getActivity(), PartnerAPI.Strings.CHECK_CONNECTION,
 								Toast.LENGTH_LONG).show();
 				}
 			});
@@ -113,16 +110,12 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			super.onActivityCreated(savedInstanceState);
 			b= super.getArguments();
 			
-			useMode = b.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-			if(useMode.equals(JoggingoAPI.Strings.USER_MODE))
-				userToken = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(JoggingoAPI.Strings.ACCESS_TOKEN, null);
 			
-			userID = b.getString(JoggingoAPI.Strings.USER_ID_BUNDLE);
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-			searchIt("offers/top.json");
+			searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key=AIzaSyDGL3odpvv006ZEbgKTxN0_0R7ArRP_0qg");
 
 
 		}
@@ -131,7 +124,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 		public void onListItemClick(ListView l, View v, int position, long id) {
 			
 						
-			String id_offer = ids.get(position);
+			/*String id_offer = ids.get(position);
 			String title_offer = titles.get(position);
 			String owner_offer = owners.get(position);
 			Intent intent = new Intent(this.getSherlockActivity(), OffersPanelActivity.class );
@@ -140,10 +133,10 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			intent.putExtra("title", title_offer);
 			intent.putExtra("owner", owner_offer);
 			//include de user id
-			intent.putExtra(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode);
+			intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			
 
-			startActivity(intent);
+			startActivity(intent);*/
 
 
 		}

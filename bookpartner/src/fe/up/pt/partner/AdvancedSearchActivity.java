@@ -22,7 +22,7 @@ public class AdvancedSearchActivity extends SherlockFragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		extras= getIntent().getExtras();
-		setTheme(R.style.Theme_seis);
+
 		super.onCreate(savedInstanceState);
 
 	

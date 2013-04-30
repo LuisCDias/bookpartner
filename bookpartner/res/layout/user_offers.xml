@@ -4,8 +4,7 @@
     android:layout_height="wrap_content" 
     android:background="@drawable/layoutstyle" >
     
-                
-	    
+                
 	    <LinearLayout
 	        android:id="@+id/user_offersLayout"
 	        android:layout_width="fill_parent"
@@ -24,7 +23,7 @@
 	            android:layout_marginLeft="5dp"
 	            android:layout_marginTop="5dp"	            
 	            android:gravity="left|center_vertical"
-	            android:src="@drawable/default_offer" />
+	            android:src="@drawable/default_book" />
 	        
 	          
 		          <!--  <TextView  

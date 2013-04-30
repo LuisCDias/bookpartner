@@ -34,11 +34,10 @@ public class OffersPanelActivity extends SherlockFragmentActivity implements Tab
 		if(extras!=null){
 			title = extras.getString("title");
 
-			useMode = extras.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-			if(useMode.equals(JoggingoAPI.Strings.USER_MODE))
-				userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(JoggingoAPI.Strings.ACCESS_TOKEN, null);
+			useMode = extras.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+			if(useMode.equals(PartnerAPI.Strings.USER_MODE))
+				userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 		}
-		setTheme(R.style.Theme_seis);
 
 		super.onCreate(savedInstanceState);
 

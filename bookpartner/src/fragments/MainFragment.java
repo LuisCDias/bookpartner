@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import fe.up.pt.partner.JoggingoAPI;
+import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -20,7 +20,7 @@ public class MainFragment extends SherlockFragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_seis); //Used for theme switching in samples
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_menu);
 
@@ -43,8 +43,8 @@ public class MainFragment extends SherlockFragmentActivity {
 
 			View v = inflater.inflate(R.layout.activity_main_menu, container, false);
 
-			TextView userNameTextView = (TextView) v.findViewById(R.id.userNameOnMainMenu);
-			userNameTextView.setText(book+"-"+partner);
+			TextView userNameTextView = (TextView) v.findViewById(R.id.mysixText);
+			userNameTextView.setText(book+" "+partner);
 
 			return v;
 		}

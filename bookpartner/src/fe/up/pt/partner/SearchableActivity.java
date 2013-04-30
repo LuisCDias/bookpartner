@@ -24,7 +24,7 @@ public class SearchableActivity extends SherlockFragmentActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_seis);   
+   
 		super.onCreate(savedInstanceState);
 
 
@@ -48,9 +48,9 @@ public class SearchableActivity extends SherlockFragmentActivity {
 
 		Bundle b = queryIntent.getBundleExtra(SearchManager.APP_DATA);
 		String type = b.getString("type");	//this is the search Type
-		useMode = b.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-		if(useMode.equals(JoggingoAPI.Strings.USER_MODE))
-			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(JoggingoAPI.Strings.ACCESS_TOKEN, null);
+		useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+		if(useMode.equals(PartnerAPI.Strings.USER_MODE))
+			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 
 		if(!(type.equals("multi_search"))){
 			if (Intent.ACTION_SEARCH.equals(queryAction)) {
@@ -70,8 +70,8 @@ public class SearchableActivity extends SherlockFragmentActivity {
 
 		b_query.putString("type", type);
 		b_query.putString("title", title);   
-		b_query.putString(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode); 
-		b_query.putString(JoggingoAPI.Strings.USER_TOKEN_BUNDLE, userToken); 
+		b_query.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
+		b_query.putString(PartnerAPI.Strings.USER_TOKEN_BUNDLE, userToken); 
 
 
 

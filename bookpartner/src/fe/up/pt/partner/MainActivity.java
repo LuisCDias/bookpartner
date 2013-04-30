@@ -43,7 +43,6 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		setTheme(R.style.Theme_seis);
 		super.onCreate(savedInstanceState);
 		
 		Bundle b = new Bundle();
@@ -64,9 +63,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
-		/*mTabsAdapter.addTab(mActionBar.newTab().setText("Hot Offers"),
-				MainFragment_Results.MainFragment_Results_Aux.class, b);*/
-		mTabsAdapter.addTab(mActionBar.newTab().setText("Home"),
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Books"),
+				MainFragment_Results.MainFragment_Results_Aux.class, b);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Book Partner"),
 				MainFragment.MainFragmentAux.class, b);
 
 
@@ -77,7 +76,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
 		MenuItem LogInItemMenu = menu.findItem(R.id.menu_LogIn);
 		
-		LogInItemMenu.setTitle(JoggingoAPI.Strings.LOGIN);
+		LogInItemMenu.setTitle(PartnerAPI.Strings.LOGIN);
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -109,7 +108,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			Bundle b = new Bundle();
 			b.putString("type", "offer" );
 			b.putString("title", title);
-			b.putString(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode);
+			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 			return true;
 		}
@@ -137,7 +136,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 	public void goWeb(View v){
 		//opens six webpage
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(JoggingoAPI.getURL()));
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(PartnerAPI.getURL()));
 		startActivity(browserIntent);
 	}
 
@@ -151,7 +150,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	public void getAdvancedSearch(View v){
 
 		Intent intent = new Intent(MainActivity.this, AdvancedSearchActivity.class);
-		intent.putExtra(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode);
+		intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 		startActivity(intent);  
 	}
 

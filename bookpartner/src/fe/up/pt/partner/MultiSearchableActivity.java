@@ -52,9 +52,9 @@ public class MultiSearchableActivity extends SherlockFragmentActivity {
 		String userName = b.getString("user"); //this is the user name to search
 		String rating = b.getString("rating"); //this is the minimum rating to look for
 		String token = b.getString("token"); //this is to identify that we want the porfolio
-		useMode = b.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-		if(useMode.equals(JoggingoAPI.Strings.USER_MODE))
-			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(JoggingoAPI.Strings.ACCESS_TOKEN, null);
+		useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+		if(useMode.equals(PartnerAPI.Strings.USER_MODE))
+			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 		
 		int adapterFlag = b.getInt("adapterFlag");
 		Bundle b_query = new Bundle();
@@ -65,8 +65,8 @@ public class MultiSearchableActivity extends SherlockFragmentActivity {
 		b_query.putString("user", userName);
 		b_query.putString("rating", rating);
 		b_query.putString("token", token);
-		b_query.putString(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode);
-		b_query.putString(JoggingoAPI.Strings.USER_TOKEN_BUNDLE, userToken);
+		b_query.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
+		b_query.putString(PartnerAPI.Strings.USER_TOKEN_BUNDLE, userToken);
 		b_query.putInt("adapterFlag", adapterFlag);
 
 

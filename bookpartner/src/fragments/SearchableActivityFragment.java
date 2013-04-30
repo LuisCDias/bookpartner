@@ -20,7 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import fe.up.pt.partner.OffersPanelActivity;
-import fe.up.pt.partner.JoggingoAPI;
+import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
@@ -32,7 +32,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 	private static int adapterFlag  = 0; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_seis); //Used for theme switching in samples
+		
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_browse);
 
@@ -66,7 +66,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			getActivity().getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-			JoggingoAPI.requestURL(URL, new ResponseCommand() {
+			PartnerAPI.requestURL(URL, new ResponseCommand() {
 
 				public void onResultReceived(Object... results) {
 
@@ -97,7 +97,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 						i++;
 					}
 
-					setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners, adapterFlag));
+					//setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners, adapterFlag));
 
 				}
 
@@ -116,7 +116,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			getActivity().getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-			JoggingoAPI.requestURL(URL, new ResponseCommand() {
+			PartnerAPI.requestURL(URL, new ResponseCommand() {
 
 				public void onResultReceived(Object... results) {
 
@@ -147,17 +147,17 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 						i++;
 					}
 
-					setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners,adapterFlag));
+					//setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners,adapterFlag));
 
 				}
 
 				@Override
 				public void onError(ERROR_TYPE error) {
 					if(error.toString().equals(ERROR_TYPE.NETWORK))
-						Toast.makeText(getActivity(), JoggingoAPI.Strings.SERVER_CONNECTION,
+						Toast.makeText(getActivity(), PartnerAPI.Strings.SERVER_CONNECTION,
 								Toast.LENGTH_LONG).show();
 					else if(error.toString().equals(ERROR_TYPE.GENERAL))
-						Toast.makeText(getActivity(), JoggingoAPI.Strings.CHECK_CONNECTION,
+						Toast.makeText(getActivity(), PartnerAPI.Strings.CHECK_CONNECTION,
 								Toast.LENGTH_LONG).show();
 				}
 			});
@@ -172,9 +172,9 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 
 			//get parent extras
 			Bundle b= super.getArguments();
-			useMode = b.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-			if(useMode.equals(JoggingoAPI.Strings.USER_MODE))
-				userToken = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(JoggingoAPI.Strings.ACCESS_TOKEN, null);
+			useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+			if(useMode.equals(PartnerAPI.Strings.USER_MODE))
+				userToken = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 			
 			
 			adapterFlag = b.getInt("adapterFlag");
@@ -257,7 +257,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			intent.putExtra("title", title_offer);
 			intent.putExtra("owner", owner_offer);
 			intent.putExtra("adapterFlag", adapterFlag);
-			intent.putExtra(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode);
+			intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			startActivity(intent);
 
 		}

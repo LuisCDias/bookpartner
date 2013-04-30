@@ -33,7 +33,7 @@ import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import fe.up.pt.partner.MainActivity;
-import fe.up.pt.partner.JoggingoAPI;
+import fe.up.pt.partner.PartnerAPI;
 /**
  * Execute the OAuthRequestTokenTask to retrieve the request, and authorize the
  * request. After the request is authorized by the user, the callback URL will
@@ -153,7 +153,7 @@ public class OAuthAccessTokenActivity extends Activity {
 					 */
 
 					Intent i = new Intent( OAuthAccessTokenActivity.this,  MainActivity.class );
-					i.putExtra(JoggingoAPI.Strings.LAUNCH_FLAG_BUNDLE, JoggingoAPI.Ints.LAUNCH_FLAG_MAIN_LOAD);
+					i.putExtra(PartnerAPI.Strings.LAUNCH_FLAG_BUNDLE, PartnerAPI.Ints.LAUNCH_FLAG_MAIN_LOAD);
 					startActivity(i);
 
 					finish();

@@ -13,9 +13,9 @@
         <LinearLayout
             android:id="@+id/userNamelayout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="center_vertical"
-            android:background="@color/grey"
+            android:background="@color/black"
             android:clickable="true"
             android:gravity="right|center_vertical"
             android:orientation="horizontal" >
@@ -29,63 +29,18 @@
                 android:background="@drawable/layoutstyle2"
                 android:gravity="right|center_vertical" />
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/iconListLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/userNamelayout"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" 
-            android:visibility="gone">
-			
-            
-            <ImageButton
-                android:id="@+id/mySix"
-                android:layout_width="115dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="0.33"
-                android:gravity="right"
-                android:onClick="openMySix"
-                android:src="@drawable/ic_launcher" />
-
-            <ImageButton
-                android:id="@+id/sellService"
-                android:layout_width="115dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="0.33"
-                android:gravity="left"
-                android:onClick="sellOffer"
-                android:src="@drawable/ic_launcher" />
-
-            <ImageButton
-                android:id="@+id/goWeb"
-                android:layout_width="115dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="0.33"
-                android:gravity="left"
-                android:onClick="goWeb"
-                android:src="@drawable/ic_launcher" />
-        </LinearLayout>
+        
 
         <LinearLayout
             android:id="@+id/mysixlayout"
             android:layout_width="fill_parent"
             android:layout_height="70dp"
-            android:layout_below="@id/iconListLayout"
+            android:layout_below="@id/userNamelayout"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/layoutstyle"
-            android:clickable="true"
             android:gravity="center_vertical"
-            android:onClick="openMySix"
             android:orientation="horizontal" >
 
             <ImageView
@@ -95,7 +50,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:gravity="left|center_vertical"
-                android:src="@drawable/default_offer" />
+                android:src="@drawable/default_book" />
 
 
             <LinearLayout
@@ -115,7 +70,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="My Six"
+                    android:text="Book name"
                     android:textSize="18dp" />
 			                  
             </LinearLayout>
@@ -132,7 +87,7 @@
             android:background="@drawable/gradient" >
         </View>
         
-        
+        <!--
         <LinearLayout
             android:id="@+id/messageslayout"
             android:layout_width="fill_parent"
@@ -156,7 +111,7 @@
                 android:gravity="left|center_vertical"
                 android:src="@drawable/message_cinza" />
 
-            <!--
+            
             <TextView  
             android:id="@+id/messagesText"
             android:layout_width="0dip" 
@@ -169,7 +124,7 @@
         	android:textSize="18dp"
             android:text="Messages"
             /> 
-            -->
+           
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -381,7 +336,7 @@
                 android:gravity="left|center_vertical"
                 android:text="Settings"
                 android:textSize="18dp" />
-        </LinearLayout>
+        </LinearLayout> -->
     </RelativeLayout>
 
 </ScrollView>

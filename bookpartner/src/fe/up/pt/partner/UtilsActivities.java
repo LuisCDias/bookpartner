@@ -12,7 +12,7 @@ public class UtilsActivities {
 	public static void checkToken(Activity a){
 		// Handles the token according to dates
 					if(PreferenceManager.getDefaultSharedPreferences(a).getString("access_token", null) != null){
-						Date d = new Date (PreferenceManager.getDefaultSharedPreferences(a).getLong(JoggingoAPI.Strings.EXPIRES_IN,0));
+						Date d = new Date (PreferenceManager.getDefaultSharedPreferences(a).getLong(PartnerAPI.Strings.EXPIRES_IN,0));
 						Date d2 = Calendar.getInstance().getTime();
 
 						if (d2.after(d)){

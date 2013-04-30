@@ -33,8 +33,7 @@ public class ResultsActivity extends SherlockFragmentActivity {
 		if(extras!=null){
 			title = extras.getString("title");
 		}
-		useMode = extras.getString(JoggingoAPI.Strings.USE_MODE_BUNDLE);
-		setTheme(R.style.Theme_seis);
+		useMode = extras.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
 		super.onCreate(savedInstanceState);
 
 		mViewPager = new ViewPager(this);
@@ -89,7 +88,7 @@ public class ResultsActivity extends SherlockFragmentActivity {
 	             type = "offer";
 	             b.putString("type", type);
 	             b.putString("title", title);
-	             b.putString(JoggingoAPI.Strings.USE_MODE_BUNDLE, useMode); 
+	             b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
 	             searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 	     return true;
 	 }
