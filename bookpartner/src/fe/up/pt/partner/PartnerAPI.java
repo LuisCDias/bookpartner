@@ -25,7 +25,7 @@ public class PartnerAPI {
     	String htmlGreen = "<font  color=green \\>";
     	String htmlRed= "<font  color=red \\>";
     	String htmlYellow = "<font  color=#FFA824 \\>";
-    	String SERVER_URL = "http://192.168.55.101";
+    	String SERVER_URL = "http://192.168.55.101"; //TODO REPLACE WITH WEBSERVER URL
     	String RATING_TAG = "Rating: ";
     	String PROJECTS_DONE_TAG = "Offers Completed: ";
     	String GUEST_MODE = "GUEST_MODE";
@@ -95,7 +95,7 @@ public class PartnerAPI {
             String DATE = "date";
     }
 
-    private static final String URL = "";
+    private static final String URL = "";//TODO REPLACE WITH WEBSERVER URL
 
     private static String userKey = null;
     private static String nonce = null;

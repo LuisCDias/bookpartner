@@ -89,7 +89,7 @@ public class ResultsActivity extends SherlockFragmentActivity {
 	             b.putString("type", type);
 	             b.putString("title", title);
 	             b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
-	             searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+	             //searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 	     return true;
 	 }
 	 return false;

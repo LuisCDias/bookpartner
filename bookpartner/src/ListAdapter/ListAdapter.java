@@ -19,7 +19,6 @@ public class ListAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<String> titles;
     private static LayoutInflater inflater=null;
-    private int flag ;
     public ImageLoader imageLoader; 
     
     public ListAdapter(Activity a, ArrayList<String> tlt) {

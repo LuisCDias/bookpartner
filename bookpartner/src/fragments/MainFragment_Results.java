@@ -67,7 +67,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 					ids = new ArrayList<String>();
 
 					int i = 0;
-					//while (!books.isNull(i)) {
+
 					try {
 						
 						JSONArray items = book.getJSONArray("items");
@@ -83,8 +83,6 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					//i++;
-					//}
 
 					
 					setListAdapter(new ListAdapter(getActivity(), titles));

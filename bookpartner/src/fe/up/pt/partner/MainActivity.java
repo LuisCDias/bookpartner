@@ -109,7 +109,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			b.putString("type", "offer" );
 			b.putString("title", title);
 			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+			//searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 			return true;
 		}
 		return false;
@@ -149,9 +149,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	//--------------------------------------------------------------------------------------
 	public void getAdvancedSearch(View v){
 
-		Intent intent = new Intent(MainActivity.this, AdvancedSearchActivity.class);
+		/*Intent intent = new Intent(MainActivity.this, AdvancedSearchActivity.class);
 		intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-		startActivity(intent);  
+		startActivity(intent);*/  
 	}
 
 
