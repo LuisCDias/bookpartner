@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import AsyncTasks.ResponseCommand;
 import AsyncTasks.ResponseCommand.ERROR_TYPE;
 import ListAdapter.ListAdapter;
-import ListAdapter.OffersAdapter;
+import ListAdapter.BooksAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,14 +20,14 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import fe.up.pt.partner.OffersPanelActivity;
+import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 
-public class OffersPanelActivityFragment extends SherlockFragmentActivity {
+public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 	private static int adapterFlag=0;
 	private static int wishFlag=0;
@@ -163,7 +163,7 @@ public class OffersPanelActivityFragment extends SherlockFragmentActivity {
 								wishFlag=0;
 							
 
-					setListAdapter(new OffersAdapter(getActivity(), titles, texts, images, owners,datas, adapterFlag,wishFlag));
+					setListAdapter(new BooksAdapter(getActivity(), titles, texts, images, owners,datas, adapterFlag,wishFlag));
 
 				}
 
@@ -207,7 +207,7 @@ public class OffersPanelActivityFragment extends SherlockFragmentActivity {
 		@Override
 		public void onListItemClick(ListView l, View v, int position, long id) {
 
-			Intent intent = new Intent(this.getSherlockActivity(), OffersPanelActivity.class );
+			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 			intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			startActivity(intent);
 

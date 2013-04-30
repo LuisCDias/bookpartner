@@ -18,7 +18,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import fe.up.pt.partner.OffersPanelActivity;
+import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;

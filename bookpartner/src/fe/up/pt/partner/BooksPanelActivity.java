@@ -15,9 +15,9 @@ import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import fe.up.pt.partner.R;
-import fragments.OffersPanelActivityFragment;
+import fragments.BooksPanelActivityFragment;
 
-public class OffersPanelActivity extends SherlockFragmentActivity implements TabListener {
+public class BooksPanelActivity extends SherlockFragmentActivity implements TabListener {
 
 	ViewPager mViewPager;
 	ActionBar mActionBar;
@@ -53,7 +53,7 @@ public class OffersPanelActivity extends SherlockFragmentActivity implements Tab
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText(title),
-				OffersPanelActivityFragment.OffersPanelActivityFragmentAux.class,extras);
+				BooksPanelActivityFragment.OffersPanelActivityFragmentAux.class,extras);
 
 	}	
 

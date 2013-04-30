@@ -19,7 +19,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import fe.up.pt.partner.OffersPanelActivity;
+import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -112,7 +112,6 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 
 		private void multiSearch(String URL) {
 
-			Log.d("ASDASDASDASDAs", URL);
 			getActivity().getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -252,7 +251,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			
 			
 
-			Intent intent = new Intent(this.getSherlockActivity(), OffersPanelActivity.class );
+			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 			intent.putExtra("id", id_offer);
 			intent.putExtra("title", title_offer);
 			intent.putExtra("owner", owner_offer);

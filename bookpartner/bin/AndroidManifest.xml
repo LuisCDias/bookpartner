@@ -30,27 +30,10 @@
                 android:name="android.app.default_searchable"
                 android:value=".SearchableActivity" />
         </activity>
-
-
-        <activity
-            android:name=".ResultsActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.default_searchable"
-                android:value=".SearchableActivity" />
-        </activity>
-        
+ 
         
         <activity
-            android:name=".OffersPanelActivity"
+            android:name=".BooksPanelActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_feed_back_panle"
             android:screenOrientation="portrait" >
@@ -74,28 +57,7 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity
-            android:name=".AdvancedSearchActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MultiSearchableActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-            </intent-filter>
-        </activity>
+        
         
         <activity android:name="oauth2.OAuthAccessTokenActivity" android:launchMode="singleTask">
                         <intent-filter>

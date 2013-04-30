@@ -43,6 +43,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
+		setTheme(R.style.Theme_Sherlock);
 		super.onCreate(savedInstanceState);
 		
 		Bundle b = new Bundle();
@@ -109,7 +110,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			b.putString("type", "offer" );
 			b.putString("title", title);
 			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			//searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 			return true;
 		}
 		return false;
@@ -141,7 +142,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	}
 
 	public void openOfferPage(View v){
-		Intent intent = new Intent(MainActivity.this, OffersPanelActivity.class);
+		Intent intent = new Intent(MainActivity.this, BooksPanelActivity.class);
 		startActivity(intent);
 	}
 

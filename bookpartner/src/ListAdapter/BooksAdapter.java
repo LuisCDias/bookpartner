@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import fe.up.pt.partner.R;
 
-public class OffersAdapter extends BaseAdapter {
+public class BooksAdapter extends BaseAdapter {
     
     private Activity activity;
     private ArrayList<String> titles;
@@ -26,7 +26,7 @@ public class OffersAdapter extends BaseAdapter {
     int wishflag;
     public ImageLoader imageLoader; 
     
-    public OffersAdapter(Activity a, ArrayList<String> tlt, ArrayList<String> txt, ArrayList<String> i, 
+    public BooksAdapter(Activity a, ArrayList<String> tlt, ArrayList<String> txt, ArrayList<String> i, 
     		ArrayList<String> o, ArrayList<String> d, int f, int w) {
         activity = a;
         titles=tlt;
@@ -55,7 +55,7 @@ public class OffersAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
         if(convertView==null)
-            vi = inflater.inflate(R.layout.offer_view, null);
+            vi = inflater.inflate(R.layout.book_view, null);
      
         TextView text=(TextView)vi.findViewById(R.id.offerText);
         //TextView title=(TextView)vi.findViewById(R.id.offerTitle);

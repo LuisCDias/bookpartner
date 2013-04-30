@@ -43,7 +43,7 @@ public class ListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
         if(convertView==null)
-            vi = inflater.inflate(R.layout.user_offers, null);
+            vi = inflater.inflate(R.layout.list_books, null);
      
        // TextView text=(TextView)vi.findViewById(R.id.user_offerText);
 
