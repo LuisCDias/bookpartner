@@ -19,29 +19,27 @@ public class BooksAdapter extends BaseAdapter {
     private ArrayList<String> titles;
     private ArrayList<String> texts;
     private ArrayList<String> images;
-    private ArrayList<String> owners;
-    private ArrayList<String> datas;
+    private ArrayList<String> authors;
+    
     private static LayoutInflater inflater=null;
-    int flag;
-    int wishflag;
+
     public ImageLoader imageLoader; 
     
-    public BooksAdapter(Activity a, ArrayList<String> tlt, ArrayList<String> txt, ArrayList<String> i, 
-    		ArrayList<String> o, ArrayList<String> d, int f, int w) {
+    //BooksAdapter(getActivity(), titles, texts, images, authors)
+    public BooksAdapter(Activity a, ArrayList<String> tlt, ArrayList<String> txt, ArrayList<String> i, ArrayList<String> au) {
+    	
         activity = a;
         titles=tlt;
         texts=txt;
         images=i;
-        owners=o;
-        datas=d;
-        flag = f;
-        wishflag=w;
+        authors = au;
+        
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         imageLoader=new ImageLoader(activity.getApplicationContext());
     }
 
     public int getCount() {
-        return titles.size(); //pelo menos um titulo h� sempre
+        return titles.size(); 
     }
 
     public Object getItem(int position) {
@@ -57,27 +55,17 @@ public class BooksAdapter extends BaseAdapter {
         if(convertView==null)
             vi = inflater.inflate(R.layout.book_view, null);
      
-        TextView text=(TextView)vi.findViewById(R.id.offerText);
-        //TextView title=(TextView)vi.findViewById(R.id.offerTitle);
-        TextView seller=(TextView)vi.findViewById(R.id.offerSeller);
-        TextView data = (TextView)vi.findViewById(R.id.offerDate);
-        ImageView image=(ImageView)vi.findViewById(R.id.offerImage);
-        Button b1 = (Button) vi.findViewById(R.id.contactSeller_btn);
-        Button b2 = (Button) vi.findViewById(R.id.add_wish_btn);
+        //TextView text=(TextView)vi.findViewById(R.id.);
+       // TextView author=(TextView)vi.findViewById(R.id.book_author);
         
-        if(flag==1){
-        	b1.setVisibility(View.GONE);
-        }
-        if(wishflag==1)
-        	b2.setText("Remove from wishlist");
-        	
-        text.setText(texts.get(position));
+        //ImageView image=(ImageView)vi.findViewById(R.id.book_cover);
+      	
+       // author.setText(authors.get(position));
         //title.setText(titles.get(position));
-        seller.setText("From: "+owners.get(position));
-        data.setText(datas.get(position));
         
-        imageLoader.DisplayImage(images.get(position), image, "offer");
+      //  imageLoader.DisplayImage(images.get(position), image, "book");
 
         return vi;
     }
 }
+	

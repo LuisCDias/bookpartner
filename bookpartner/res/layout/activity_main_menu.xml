@@ -29,7 +29,6 @@
                 android:background="@drawable/layoutstyle"
                 android:gravity="right|center_vertical" />
         </LinearLayout>
-        
 
         <LinearLayout
             android:id="@+id/mysixlayout"
@@ -52,7 +51,6 @@
                 android:gravity="left|center_vertical"
                 android:src="@drawable/default_book" />
 
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -70,10 +68,9 @@
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:textColor="@color/white"
                     android:text="Book name"
+                    android:textColor="@color/white"
                     android:textSize="18dp" />
-			                  
             </LinearLayout>
         </LinearLayout>
 
@@ -87,7 +84,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/gradient" >
         </View>
-        
+
         <!--
         <LinearLayout
             android:id="@+id/messageslayout"
@@ -337,7 +334,8 @@
                 android:gravity="left|center_vertical"
                 android:text="Settings"
                 android:textSize="18dp" />
-        </LinearLayout> -->
+        </LinearLayout>
+        -->
     </RelativeLayout>
 
 </ScrollView>

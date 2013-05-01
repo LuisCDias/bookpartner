@@ -26,25 +26,23 @@ public class MainFragment extends SherlockFragmentActivity {
 
 	}
 
-	//TODO: This ACtivity will run an AsyncTask to Load The message number and user Credentials to the view (please see asyncTask on LaunchActivity
-
+	//TODO: Esta actividade vai ser um ListFragment para listar os livros vistos mais recentemente
 	public static class MainFragmentAux extends SherlockFragment {
-
-
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			Bundle b= super.getArguments();
 			//get values from bundles
-
-			String book= b.getString("book");
-
-			String partner = b.getString("partner");
+			
+		
+			String book = b.getString("book");
+			
 
 			View v = inflater.inflate(R.layout.activity_main_menu, container, false);
 
 			TextView userNameTextView = (TextView) v.findViewById(R.id.mysixText);
-			userNameTextView.setText(book+" "+partner);
+			userNameTextView.setText(book);
 
 			return v;
 		}

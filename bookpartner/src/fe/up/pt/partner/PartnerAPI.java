@@ -8,26 +8,30 @@ import android.util.Log;
 
 public class PartnerAPI {
 
-    // Logger Tag
-    private static final String TAG = "Joggingo API";
-
-    public static final String PREFERENCES = "joggingo";
+    public static final String PREFERENCES = "bookpartner";
     private static String username = "";
     private static String location = "";
     private static int search = 10;
+    
+    
+    public interface APIkeys{
+    	
+    	String GOOGLE_BOOKS_KEY = "AIzaSyDGL3odpvv006ZEbgKTxN0_0R7ArRP_0qg";
+    	String GOODREADS_KEY = "";
+    }
     
     private interface ApplicationKey {
             String NAME = "app_key";
             String VALUE = "";
     }
     public interface Strings{
+    	
     	String htmlBlack = "<font  color=black \\>";
     	String htmlGreen = "<font  color=green \\>";
     	String htmlRed= "<font  color=red \\>";
     	String htmlYellow = "<font  color=#FFA824 \\>";
-    	String SERVER_URL = "http://192.168.55.101"; //TODO REPLACE WITH WEBSERVER URL
+    	String SERVER_URL = "http://localhost/"; //TODO REPLACE WITH WEBSERVER URL
     	String RATING_TAG = "Rating: ";
-    	String PROJECTS_DONE_TAG = "Offers Completed: ";
     	String GUEST_MODE = "GUEST_MODE";
     	String USER_MODE = "USER_MODE";
     	String USE_MODE_BUNDLE = "useMode";
@@ -44,21 +48,16 @@ public class PartnerAPI {
     	String EXPIRES_IN = "expires_in";
     	String CHECK_CONNECTION = "Please Verify Your Connection";
     	String SERVER_CONNECTION = "Server connection currently down";
-    	String PLEASE_LOGIN = "Please Log in To use this Feature";
-    	String CONFIRMATION_POPUP_BUNDLE = "confirmation_action";
-    	String CONFIRMATION_POPUP_WISHLIST = "wishlist";
-    	String LOGIN = "Log In";
-    	String LOGOUT = "Log Out";
-    	String DATE_FORMAT = "Delivery Date must be at least one day after Start Date";
-    	String SELER = "Seller";
-    	String BUYER = "Buyer";
-    	String PERSONAL_DATA = "Personal Data";
+    	String PLEASE_LOGIN = "Please login to use this Feature";
+    	String LOGIN = "Login";
+    	String LOGOUT = "Logout";
     	String NOT_IMPLEMENTED = "This feature is not available using Android app. Please use the Website for this";
     	String FLAG_ADAPTER_BUNDLER = "flagAdapter";
     	String LAUNCH_FLAG_BUNDLE = "launcheFlag";
     }
     
     public interface Ints{
+    	
     	int ORDER_MINUTES_I = 0;
     	int ORDER_HOURS_I = 0;
     	int ORDER_MINUTES_F = 59;
@@ -73,6 +72,7 @@ public class PartnerAPI {
     }
 
     public interface Search {
+    	
             String KEYWORDS = "keywords";
             String LOCATION = "location";
             String DATE = "date";
@@ -90,6 +90,7 @@ public class PartnerAPI {
     }
 
     public interface SortOrder {
+    	
             String RELEVANCE = "relevance";
             String POPULARITY = "popularity";
             String DATE = "date";

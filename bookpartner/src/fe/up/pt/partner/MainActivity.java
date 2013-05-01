@@ -48,13 +48,12 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		
 		Bundle b = new Bundle();
 		
-		b.putString("book", "Book");
-		b.putString("partner", "Partner");
+		b.putString("book", "Awesome book");
 		
 
 		mViewPager = new ViewPager(this);
 		mViewPager.setId(R.id.pager);
-		mViewPager.setBackgroundColor(Color.WHITE);
+		mViewPager.setBackgroundColor(Color.BLACK);
 		setContentView(mViewPager);
 
 		mActionBar = getSupportActionBar();
@@ -62,12 +61,14 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
-		mTabsAdapter.addTab(mActionBar.newTab().setText("Books"),
-				MainFragment_Results.MainFragment_Results_Aux.class, b);
-		mTabsAdapter.addTab(mActionBar.newTab().setText("Book Partner"),
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
 				MainFragment.MainFragmentAux.class, b);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
+				MainFragment_Results.MainFragment_Results_Aux.class, b);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Genre"),
+				MainFragment.MainFragmentAux.class, b);
+		mActionBar.setSelectedNavigationItem(1);
 
 
 	}	
@@ -75,7 +76,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
-		MenuItem LogInItemMenu = menu.findItem(R.id.menu_LogIn);
+		MenuItem LogInItemMenu = menu.findItem(R.id.menu_login);
 		
 		LogInItemMenu.setTitle(PartnerAPI.Strings.LOGIN);
 		return super.onCreateOptionsMenu(menu);
@@ -107,10 +108,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			// start the search with the appropriate searchable activity
 			// so we get the correct search hint in the search dialog
 			Bundle b = new Bundle();
-			b.putString("type", "offer" );
 			b.putString("title", title);
 			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+			//searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 			return true;
 		}
 		return false;
@@ -132,27 +132,6 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		if(resultCode==3){
 			finish();
 		}
-	}
-
-
-	public void goWeb(View v){
-		//opens six webpage
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(PartnerAPI.getURL()));
-		startActivity(browserIntent);
-	}
-
-	public void openOfferPage(View v){
-		Intent intent = new Intent(MainActivity.this, BooksPanelActivity.class);
-		startActivity(intent);
-	}
-
-	
-	//--------------------------------------------------------------------------------------
-	public void getAdvancedSearch(View v){
-
-		/*Intent intent = new Intent(MainActivity.this, AdvancedSearchActivity.class);
-		intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-		startActivity(intent);*/  
 	}
 
 

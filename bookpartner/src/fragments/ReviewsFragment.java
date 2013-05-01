@@ -25,32 +25,28 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 
-public class MainFragment_Results extends SherlockFragmentActivity {
+public class ReviewsFragment extends SherlockFragmentActivity {
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-
+		setTheme(R.style.Theme_Sherlock);
 		// Create the list fragment and add it as our sole content.
 		if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-			MainFragment_Results_Aux list = new MainFragment_Results_Aux();
+			ReviewsFragmentAux list = new ReviewsFragmentAux();
 			getSupportFragmentManager().beginTransaction()
 			.add(android.R.id.content, list).commit();
 		}
 
 	}
 
-	public static class MainFragment_Results_Aux extends SherlockListFragment {
+	public static class ReviewsFragmentAux extends SherlockListFragment {
 
 		private ArrayList<String> titles;
 		private ArrayList<String> ids;
 		private ArrayList<String> authors;
-		private ArrayList<String> page_counts;
-		private ArrayList<String> ratings;
-		private ArrayList<String> covers;
-		
 		
 		Bundle b;
 
@@ -70,9 +66,6 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 					authors = new ArrayList<String>();
 					titles = new ArrayList<String>();
 					ids = new ArrayList<String>();
-					page_counts = new ArrayList<String>();
-					ratings = new ArrayList<String>();
-					covers = new ArrayList<String>();
 
 					int i = 0;
 
@@ -88,34 +81,10 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 							titles.add(volumeInfo.getString("title"));
 							
 							JSONArray authors_array = volumeInfo.getJSONArray("authors");
-							
 							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
 							authors.add(authors_array.get(0).toString());
 							
-							if(volumeInfo.has("pageCount"))
-								page_counts.add(volumeInfo.getString("pageCount"));
-							else
-								page_counts.add("N/A");
-							if(volumeInfo.has("averageRating"))
-								ratings.add(volumeInfo.getString("averageRating"));
-							else
-								ratings.add("N/A");
-							
-							
-							JSONObject image_links = null;
-							if(volumeInfo.has("imageLinks"))
-								image_links = volumeInfo.getJSONObject("imageLinks");
-							
-							if(image_links != null){
-							
-								if(image_links.has("thumbnail")) 
-									covers.add(image_links.getString("thumbnail"));
-								else
-									covers.add("no cover");
-							}
-							else
-								covers.add("no cover");
-							
+							Log.d("author",authors_array.get(0).toString());
 							i++;
 						}
 						
@@ -125,7 +94,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 					}
 
 					
-					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
+					//setListAdapter(new ListAdapter(getActivity(), titles, ids, authors));
 
 				}
 
@@ -145,7 +114,9 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
+			
 			super.onActivityCreated(savedInstanceState);
+			
 			b= super.getArguments();
 			
 			
@@ -153,7 +124,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-			searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
+//			searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 
 
 		}
@@ -165,19 +136,11 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			String id_book = ids.get(position);
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
-			String pages_book = page_counts.get(position);
-			String rating_book = ratings.get(position);
-			String cover_book = covers.get(position);
-			
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 
 			intent.putExtra("id", id_book);
 			intent.putExtra("title", title_book);
 			intent.putExtra("author", author_book);
-			intent.putExtra("page_count", pages_book);
-			intent.putExtra("rating", rating_book);
-			intent.putExtra("cover", cover_book);
-			
 			//include the user id
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			

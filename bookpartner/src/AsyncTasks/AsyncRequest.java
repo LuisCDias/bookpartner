@@ -24,7 +24,7 @@ public abstract class AsyncRequest extends
     protected abstract ERROR_TYPE doInBackground(Object... params);
 
     protected void onPostExecute(ERROR_TYPE error) {
-    	
+ 
         if (error == null) {
             command.onResultReceived(this.result);
             return;

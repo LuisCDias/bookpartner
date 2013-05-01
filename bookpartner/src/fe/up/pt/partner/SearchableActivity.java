@@ -29,7 +29,7 @@ public class SearchableActivity extends SherlockFragmentActivity {
 
 		mViewPager = new ViewPager(this);
 		mViewPager.setId(R.id.pager);
-		mViewPager.setBackgroundColor(Color.WHITE);
+		mViewPager.setBackgroundColor(Color.BLACK);
 		setContentView(mViewPager);
 
 		mActionBar = getSupportActionBar();

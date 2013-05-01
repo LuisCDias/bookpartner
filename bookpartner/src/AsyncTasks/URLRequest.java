@@ -22,7 +22,7 @@ public class URLRequest extends AsyncRequest {
 
     @Override
     protected ERROR_TYPE doInBackground(Object... urls) {
-
+    	
             HttpClient httpclient = new DefaultHttpClient();
             
             HttpGet request = new HttpGet((String)urls[0]);

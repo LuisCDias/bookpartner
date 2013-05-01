@@ -8,9 +8,6 @@
 package fe.up.pt.partner;
 
 public final class R {
-    public static final class array {
-        public static final int ratings_array=0x7f0c0000;
-    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -936,14 +933,14 @@ containing a value of this type.
         public static final int avatar_cinza=0x7f020073;
         public static final int backwithborder=0x7f020074;
         public static final int blueline=0x7f020075;
-        public static final int categories=0x7f020076;
-        public static final int categories_cinza=0x7f020077;
-        public static final int database_cinza=0x7f020078;
-        public static final int default_book=0x7f020079;
-        public static final int default_offer=0x7f02007a;
-        public static final int default_user=0x7f02007b;
-        public static final int favorite_star_off=0x7f02007c;
-        public static final int favorite_star_off_dark=0x7f02007d;
+        public static final int book_background=0x7f020076;
+        public static final int categories=0x7f020077;
+        public static final int categories_cinza=0x7f020078;
+        public static final int database_cinza=0x7f020079;
+        public static final int default_book=0x7f02007a;
+        public static final int default_offer=0x7f02007b;
+        public static final int default_user=0x7f02007c;
+        public static final int favorite_star_off=0x7f02007d;
         public static final int favorite_star_on=0x7f02007e;
         public static final int favorites=0x7f02007f;
         public static final int favorites_cinza=0x7f020080;
@@ -991,7 +988,6 @@ containing a value of this type.
         public static final int wishlist=0x7f0200aa;
     }
     public static final class id {
-        public static final int ContractOffer_btn=0x7f05003e;
         public static final int abs__action_bar=0x7f050022;
         public static final int abs__action_bar_container=0x7f050021;
         public static final int abs__action_bar_subtitle=0x7f050011;
@@ -1032,24 +1028,28 @@ containing a value of this type.
         public static final int abs__title=0x7f05001b;
         public static final int abs__titleDivider=0x7f05001c;
         public static final int abs__up=0x7f05000b;
-        public static final int add_wish_btn=0x7f05003d;
-        public static final int contactSeller_btn=0x7f05003f;
+        public static final int book_author=0x7f05003b;
+        public static final int book_cover=0x7f05003a;
+        public static final int book_info_layout=0x7f050039;
+        public static final int book_page_count=0x7f05003c;
+        public static final int book_release_date=0x7f05003d;
+        public static final int book_summary=0x7f05003f;
+        public static final int book_title=0x7f050042;
+        public static final int books_list_layout=0x7f050041;
         public static final int disableHome=0x7f050009;
+        public static final int div_book=0x7f05003e;
         public static final int edit_query=0x7f050027;
         public static final int gradient0=0x7f050038;
+        public static final int gradient1=0x7f050043;
         public static final int homeAsUp=0x7f050006;
         public static final int listMode=0x7f050002;
-        public static final int menu_LogIn=0x7f050048;
-        public static final int menu_search=0x7f050047;
-        public static final int menu_settings=0x7f050046;
+        public static final int menu_login=0x7f050046;
+        public static final int menu_search=0x7f050045;
+        public static final int menu_settings=0x7f050044;
         public static final int mysixImg=0x7f050036;
         public static final int mysixText=0x7f050037;
         public static final int mysixlayout=0x7f050035;
         public static final int normal=0x7f050001;
-        public static final int offerDate=0x7f05003a;
-        public static final int offerImage=0x7f05003b;
-        public static final int offerSeller=0x7f050039;
-        public static final int offerText=0x7f05003c;
         public static final int pager=0x7f050040;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
@@ -1058,11 +1058,6 @@ containing a value of this type.
         public static final int useLogo=0x7f050004;
         public static final int userNameOnMainMenu=0x7f050034;
         public static final int userNamelayout=0x7f050033;
-        public static final int user_gradient1=0x7f050045;
-        public static final int user_offerImg=0x7f050042;
-        public static final int user_offerOwner=0x7f050044;
-        public static final int user_offerTitle=0x7f050043;
-        public static final int user_offersLayout=0x7f050041;
         public static final int wrap_content=0x7f050000;
     }
     public static final class integer {
@@ -1100,10 +1095,10 @@ containing a value of this type.
         public static final int sherlock_spinner_item=0x7f03001c;
     }
     public static final class menu {
-        public static final int activity_lauch=0x7f0d0000;
-        public static final int activity_main=0x7f0d0001;
-        public static final int activity_main_menu=0x7f0d0002;
-        public static final int activity_results=0x7f0d0003;
+        public static final int activity_lauch=0x7f0c0000;
+        public static final int activity_main=0x7f0c0001;
+        public static final int activity_main_menu=0x7f0c0002;
+        public static final int activity_results=0x7f0c0003;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1151,79 +1146,18 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abs__shareactionprovider_share_with_application=0x7f0a0009;
-        public static final int allCats=0x7f0a002f;
         public static final int app_name=0x7f0a000f;
-        public static final int confirmation=0x7f0a004e;
-        public static final int database=0x7f0a002e;
-        public static final int design=0x7f0a0028;
-        public static final int final_date=0x7f0a004f;
-        public static final int from=0x7f0a004a;
-        public static final int hello_world=0x7f0a0010;
-        public static final int image=0x7f0a002b;
-        public static final int initial_date=0x7f0a004c;
-        public static final int login_button=0x7f0a0012;
-        public static final int login_forgot=0x7f0a0016;
-        public static final int login_password=0x7f0a0014;
-        public static final int login_register=0x7f0a0015;
-        public static final int login_title=0x7f0a0011;
-        public static final int login_username=0x7f0a0013;
-        public static final int menu_settings=0x7f0a0024;
-        public static final int mobile=0x7f0a002a;
-        public static final int new_contract=0x7f0a004d;
-        public static final int offerName=0x7f0a0027;
-        public static final int offerdescription=0x7f0a0030;
-        public static final int recover_button=0x7f0a0022;
-        public static final int recover_info=0x7f0a0023;
-        public static final int register_button=0x7f0a0021;
-        public static final int register_country=0x7f0a0019;
-        public static final int register_email=0x7f0a001b;
-        public static final int register_hint_country=0x7f0a001a;
-        public static final int register_hint_email=0x7f0a001c;
-        public static final int register_hint_name=0x7f0a0018;
-        public static final int register_hint_password=0x7f0a0020;
-        public static final int register_hint_username=0x7f0a001e;
-        public static final int register_name=0x7f0a0017;
-        public static final int register_password=0x7f0a001f;
-        public static final int register_username=0x7f0a001d;
-        public static final int search_activitty=0x7f0a003e;
-        public static final int search_something=0x7f0a003f;
-        public static final int select_category=0x7f0a0040;
-        public static final int select_offer=0x7f0a0043;
-        public static final int select_rating=0x7f0a0041;
-        public static final int select_user=0x7f0a0042;
-        public static final int sound=0x7f0a002c;
-        public static final int title_activity_browse=0x7f0a0037;
-        public static final int title_activity_browse_fragment=0x7f0a0039;
-        public static final int title_activity_browse_users=0x7f0a0049;
-        public static final int title_activity_compose_message_pop_up=0x7f0a0054;
-        public static final int title_activity_edit_avatar_pop_up=0x7f0a0053;
-        public static final int title_activity_edit_mail_pop_up=0x7f0a0051;
-        public static final int title_activity_edit_name_pop_up=0x7f0a0050;
-        public static final int title_activity_edit_password_pop_up=0x7f0a0052;
-        public static final int title_activity_favorites=0x7f0a0035;
-        public static final int title_activity_favourites_frament=0x7f0a0038;
-        public static final int title_activity_feed_back_panle=0x7f0a003d;
-        public static final int title_activity_lauch=0x7f0a0045;
-        public static final int title_activity_login=0x7f0a003a;
-        public static final int title_activity_main=0x7f0a0025;
-        public static final int title_activity_main_menu=0x7f0a0031;
-        public static final int title_activity_message_panel=0x7f0a003c;
-        public static final int title_activity_message_pop_up=0x7f0a003b;
-        public static final int title_activity_messages=0x7f0a0033;
-        public static final int title_activity_recover=0x7f0a0044;
-        public static final int title_activity_register=0x7f0a0032;
-        public static final int title_activity_results=0x7f0a0036;
-        public static final int title_activity_try_again=0x7f0a0046;
-        public static final int title_activity_users=0x7f0a0034;
-        public static final int title_activity_wishlist_results=0x7f0a0048;
-        public static final int to=0x7f0a004b;
-        public static final int try_again=0x7f0a0047;
-        public static final int username=0x7f0a0026;
-        public static final int video=0x7f0a002d;
-        public static final int webdev=0x7f0a0029;
+        public static final int book_description=0x7f0a0013;
+        public static final int menu_login=0x7f0a0011;
+        public static final int menu_settings=0x7f0a0010;
+        public static final int search_activitty=0x7f0a0016;
+        public static final int search_something=0x7f0a0017;
+        public static final int title_activity_book_panel=0x7f0a0015;
+        public static final int title_activity_main=0x7f0a0012;
+        public static final int title_activity_main_menu=0x7f0a0014;
     }
     public static final class style {
-        public static final int AppTheme=0x7f0b0062;
+        public static final int AppTheme=0x7f0b0059;
         public static final int DialogWindowTitle_Sherlock=0x7f0b0036;
         public static final int DialogWindowTitle_Sherlock_Light=0x7f0b0037;
         public static final int Sherlock___TextAppearance_Small=0x7f0b004a;
@@ -1266,10 +1200,6 @@ containing a value of this type.
         public static final int Theme_Sherlock_Light_Dialog=0x7f0b0058;
         public static final int Theme_Sherlock_Light_NoActionBar=0x7f0b0056;
         public static final int Theme_Sherlock_NoActionBar=0x7f0b0055;
-        public static final int Theme_seis=0x7f0b0059;
-        /**  this style is only referenced in a Light.DarkActionBar based theme 
-         */
-        public static final int Theme_seis_widget=0x7f0b0061;
         public static final int Widget=0x7f0b0000;
         public static final int Widget_Sherlock_ActionBar=0x7f0b0002;
         public static final int Widget_Sherlock_ActionBar_Solid=0x7f0b0003;
@@ -1317,13 +1247,6 @@ containing a value of this type.
         public static final int Widget_Sherlock_SearchAutoCompleteTextView=0x7f0b0034;
         public static final int Widget_Sherlock_Spinner_DropDown_ActionBar=0x7f0b0024;
         public static final int Widget_Sherlock_TextView_SpinnerItem=0x7f0b0032;
-        public static final int seis_ActionBarTabStyle=0x7f0b005e;
-        public static final int seis_DropDownListView=0x7f0b005d;
-        public static final int seis_DropDownNav=0x7f0b005f;
-        public static final int seis_PopupMenu=0x7f0b005c;
-        public static final int seis_ProgressBar=0x7f0b0060;
-        public static final int seis_solid_ActionBar=0x7f0b005a;
-        public static final int seis_transparent_ActionBar=0x7f0b005b;
     }
     public static final class xml {
         public static final int searchable=0x7f040000;

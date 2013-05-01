@@ -9,6 +9,6 @@
                 android:title="Search"
                 android:actionViewClass="android.widget.SearchView"/>
     
-    <item android:id="@+id/menu_LogIn" android:showAsAction="never|withText"
-                android:title="Log In"/>
+    <item android:id="@+id/menu_login" android:showAsAction="never|withText"
+                android:title="@string/menu_login"/>
 </menu>

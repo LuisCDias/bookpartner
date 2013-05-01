@@ -2,9 +2,8 @@
     package="fe.up.pt.partner"
     android:versionCode="1"
     android:versionName="1.0" >
-
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="8"
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,7 +13,9 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Sherlock" >
+        android:theme="@style/Theme.Sherlock" 
+        >
+        
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
@@ -35,7 +36,7 @@
         <activity
             android:name=".BooksPanelActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_feed_back_panle"
+            android:label="@string/title_activity_book_panel"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,5 +69,11 @@
                         </intent-filter>
                 </activity>
     </application>
+    <supports-screens android:resizeable="true"
+                      android:smallScreens="true" 
+                      android:normalScreens="true" 
+                      android:largeScreens="true"
+
+                      android:anyDensity="true" />
 
 </manifest>

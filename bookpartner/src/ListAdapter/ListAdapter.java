@@ -18,12 +18,25 @@ public class ListAdapter extends BaseAdapter {
     
     private Activity activity;
     private ArrayList<String> titles;
+    private ArrayList<String> ids;
+    private ArrayList<String> authors;
+    private ArrayList<String> page_counts;
+	private ArrayList<String> ratings;
+	private ArrayList<String> covers;
+    
     private static LayoutInflater inflater=null;
     public ImageLoader imageLoader; 
     
-    public ListAdapter(Activity a, ArrayList<String> tlt) {
+    public ListAdapter(Activity a, ArrayList<String> tit, ArrayList<String> i, ArrayList<String> au,
+    				   ArrayList<String> rat, ArrayList<String> pc, ArrayList<String> cov) {
         activity = a;
-        titles=tlt;
+        titles=tit;
+        ids = i;
+        authors = au;
+        page_counts = pc;
+        ratings = rat;
+        covers = cov;
+        
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         imageLoader=new ImageLoader(activity.getApplicationContext());
     }
@@ -46,11 +59,16 @@ public class ListAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.list_books, null);
      
        // TextView text=(TextView)vi.findViewById(R.id.user_offerText);
-
-        TextView title = (TextView)vi.findViewById(R.id.user_offerTitle);
+        ImageView cover =(ImageView)vi.findViewById(R.id.book_cover);
+        TextView title = (TextView)vi.findViewById(R.id.book_title);
+        TextView author = (TextView)vi.findViewById(R.id.book_author);
 
         title.setText(titles.get(position));
-
+        author.setText("by "+authors.get(position));
+        
+        if(covers.get(position)!=null)
+        	imageLoader.DisplayImage(covers.get(position), cover,"thumbnail");
+        
         return vi;
     }
 }
