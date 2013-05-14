@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,12 +64,28 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			ImageView book_cover =(ImageView)v.findViewById(R.id.book_cover);
 			TextView book_author = (TextView) v.findViewById(R.id.book_author);
 			TextView book_page_count = (TextView) v.findViewById(R.id.book_page_count);
-			TextView book_rating = (TextView) v.findViewById(R.id.book_release_date); //placeholder
+			//TextView book_rating = (TextView) v.findViewById(R.id.book_rating); //placeholder
 			TextView book_summary = (TextView) v.findViewById(R.id.book_summary);
+			
+			RatingBar book_rating_bar = (RatingBar) v.findViewById(R.id.book_rating_bar);
+			TextView book_rating_text = (TextView) v.findViewById(R.id.book_rating_text);
+			
+			if(!rating.equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
+				book_rating_bar.setRating(Float.parseFloat(rating));
+				book_rating_bar.setVisibility(View.VISIBLE);
+				book_rating_text.setVisibility(View.GONE);
+			}
+			else
+			{
+				book_rating_text.setText(rating);
+				book_rating_bar.setVisibility(View.GONE);
+				book_rating_text.setVisibility(View.VISIBLE);
+			}
 			
 			book_author.setText(author);
 			book_page_count.setText(page_count+" pages");
-			book_rating.setText(rating);
+			//book_rating.setText(rating);
+			//book_rating_bar.setRating(Float.parseFloat(rating));
 			book_summary.setText(description);
 			
 			imageLoader=new ImageLoader(this.getActivity().getApplicationContext());

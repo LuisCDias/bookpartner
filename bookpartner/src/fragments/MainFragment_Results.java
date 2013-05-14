@@ -101,7 +101,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 							if(volumeInfo.has("averageRating"))
 								ratings.add(volumeInfo.getString("averageRating"));
 							else
-								ratings.add("N/A");
+								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 							
 							/* Para evitar o facto de poder vir com uma descrição vazia,
 							 * ou não ter.*/

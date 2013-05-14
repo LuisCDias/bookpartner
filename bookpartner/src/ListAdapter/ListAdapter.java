@@ -63,12 +63,18 @@ public class ListAdapter extends BaseAdapter {
         ImageView cover =(ImageView)vi.findViewById(R.id.book_cover);
         TextView title = (TextView)vi.findViewById(R.id.book_title);
         TextView author = (TextView)vi.findViewById(R.id.book_author);
-
+        TextView rating_text = (TextView)vi.findViewById(R.id.rating_star_text);
+        
         title.setText(titles.get(position));
         author.setText("by "+authors.get(position));
         
         if(covers.get(position)!=null)
         	imageLoader.DisplayImage(covers.get(position), cover,"thumbnail");
+        
+        if(ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE))
+        	rating_text.setText("N/A");
+        else
+        	rating_text.setText(ratings.get(position));
         
         return vi;
     }

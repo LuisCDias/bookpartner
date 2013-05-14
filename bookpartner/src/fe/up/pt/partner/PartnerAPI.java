@@ -54,6 +54,7 @@ public class PartnerAPI {
     	String NOT_IMPLEMENTED = "This feature is not available using Android app. Please use the Website for this";
     	String FLAG_ADAPTER_BUNDLER = "flagAdapter";
     	String LAUNCH_FLAG_BUNDLE = "launcheFlag";
+    	String NO_RATING_AVAILABLE = "No rating available";
     }
     
     public interface Ints{

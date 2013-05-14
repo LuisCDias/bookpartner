@@ -60,19 +60,36 @@
                     android:text="Page Count"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
-
+                
+                <!-- when rating is available -->
+                <RatingBar
+                    style = "?android:attr/ratingBarStyleSmall"
+	                android:id="@+id/book_rating_bar"
+	                android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+	                android:layout_height="0dp"
+	                android:numStars="5"
+	                android:layout_width="wrap_content"
+	                android:layout_weight="0.1"
+	                android:rating="0"
+	                android:visibility="visible" />
+               
+                <!-- when no rating is available -->
                 <TextView
-                    android:id="@+id/book_release_date"
+                    android:id="@+id/book_rating_text"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
-                    android:text="Release date"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:text="No rating available"
+                    android:textSize="14dp" 
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -102,6 +119,9 @@
                 android:textColor="@android:color/white" >
             </TextView>
         </LinearLayout>
+        
+        
+        
     </RelativeLayout>
 
 </ScrollView>
