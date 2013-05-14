@@ -55,6 +55,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			String page_count= b.getString("page_count");
 			String rating= b.getString("rating");
 			String cover= b.getString("cover");
+			String description = b.getString("description");
 
 
 			View v = inflater.inflate(R.layout.book_view, container, false);
@@ -63,10 +64,12 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			TextView book_author = (TextView) v.findViewById(R.id.book_author);
 			TextView book_page_count = (TextView) v.findViewById(R.id.book_page_count);
 			TextView book_rating = (TextView) v.findViewById(R.id.book_release_date); //placeholder
+			TextView book_summary = (TextView) v.findViewById(R.id.book_summary);
 			
 			book_author.setText(author);
 			book_page_count.setText(page_count+" pages");
 			book_rating.setText(rating);
+			book_summary.setText(description);
 			
 			imageLoader=new ImageLoader(this.getActivity().getApplicationContext());
 			imageLoader.DisplayImage(cover, book_cover,"thumbnail");

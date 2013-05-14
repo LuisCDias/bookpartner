@@ -37,6 +37,7 @@ public class ListAdapter extends BaseAdapter {
         ratings = rat;
         covers = cov;
         
+        
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         imageLoader=new ImageLoader(activity.getApplicationContext());
     }

@@ -50,6 +50,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 		private ArrayList<String> page_counts;
 		private ArrayList<String> ratings;
 		private ArrayList<String> covers;
+		private ArrayList<String> descriptions;
 		
 		
 		Bundle b;
@@ -73,6 +74,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 					page_counts = new ArrayList<String>();
 					ratings = new ArrayList<String>();
 					covers = new ArrayList<String>();
+					descriptions = new ArrayList<String>();
 
 					int i = 0;
 
@@ -101,6 +103,12 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 							else
 								ratings.add("N/A");
 							
+							/* Para evitar o facto de poder vir com uma descrição vazia,
+							 * ou não ter.*/
+							if(volumeInfo.has("description"))
+								descriptions.add(volumeInfo.getString("description"));
+							else
+								descriptions.add("N/A");
 							
 							JSONObject image_links = null;
 							if(volumeInfo.has("imageLinks"))
@@ -168,6 +176,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			String pages_book = page_counts.get(position);
 			String rating_book = ratings.get(position);
 			String cover_book = covers.get(position);
+			String description = descriptions.get(position);
 			
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 
@@ -177,6 +186,7 @@ public class MainFragment_Results extends SherlockFragmentActivity {
 			intent.putExtra("page_count", pages_book);
 			intent.putExtra("rating", rating_book);
 			intent.putExtra("cover", cover_book);
+			intent.putExtra("description", description);
 			
 			//include the user id
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
