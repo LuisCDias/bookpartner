@@ -25,7 +25,8 @@ import com.actionbarsherlock.view.MenuItem;
 
 import fe.up.pt.partner.R;
 import fragments.MainFragment;
-import fragments.MainFragment_Results;
+import fragments.MainFragment_Recent;
+import fragments.MainFragment_Top;
 
 public class MainActivity extends SherlockFragmentActivity implements TabListener {
 
@@ -63,9 +64,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
-				MainFragment.MainFragmentAux.class, b);
+				MainFragment_Top.MainFragment_Top_Aux.class, b);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
-				MainFragment_Results.MainFragment_Results_Aux.class, b);
+				MainFragment_Recent.MainFragment_Recent_Aux.class, b);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Genre"),
 				MainFragment.MainFragmentAux.class, b);
 		mActionBar.setSelectedNavigationItem(1);
