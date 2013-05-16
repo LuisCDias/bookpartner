@@ -135,6 +135,10 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		}
 	}
 
+	/*public void openFullCover(View v){
+		
+		MainFragment_Recent.openFullCover(v, this);
+	}*/
 
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 

@@ -55,6 +55,7 @@ public class PartnerAPI {
     	String FLAG_ADAPTER_BUNDLER = "flagAdapter";
     	String LAUNCH_FLAG_BUNDLE = "launcheFlag";
     	String NO_RATING_AVAILABLE = "No rating available";
+    	String NOT_AVAILABLE = "N/A";
     }
     
     public interface Ints{

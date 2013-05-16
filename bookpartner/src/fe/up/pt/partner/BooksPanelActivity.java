@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -104,6 +105,16 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		return false;
 	}
 
+	public void openFullCover(View v){
+
+		Intent intent = new Intent(this, FullCoverActivity.class );
+		
+		String cover = extras.getString("cover");
+		intent.putExtra("cover", cover);
+		
+		startActivity(intent);
+	}
+	
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
 

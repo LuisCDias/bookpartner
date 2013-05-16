@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import AsyncTasks.ResponseCommand;
 import AsyncTasks.ResponseCommand.ERROR_TYPE;
 import ListAdapter.ListAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import fe.up.pt.partner.BooksPanelActivity;
+import fe.up.pt.partner.FullCoverActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -161,7 +163,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-			searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
+			searchIt("https://www.googleapis.com/books/v1/volumes?q=a+song+of+ice+and+fire&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 
 
 		}
@@ -169,7 +171,6 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 		@Override
 		public void onListItemClick(ListView l, View v, int position, long id) {
 			
-						
 			String id_book = ids.get(position);
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
@@ -191,8 +192,22 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 			//include the user id
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			
-			startActivity(intent);
+			startActivity(intent);	
 
 		}
+
 	}
+	/*public static void openFullCover(View v, Context ctx){
+		
+		switch(v.getId()){
+		
+		case R.id.book_cover:
+			Log.d("BOOK", "COVER");
+			
+			Intent intent = new Intent(ctx, FullCoverActivity.class);
+			v.get
+			break;
+	
+		}
+	}*/
 }

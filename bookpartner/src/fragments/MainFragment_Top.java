@@ -54,7 +54,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 		private ArrayList<String> covers;
 		private ArrayList<String> descriptions;
 
-
+		private ArrayList<String> ordered_ratings; //so para aparecer bonito e ter se uma ideia
 		Bundle b;
 
 
@@ -99,7 +99,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							if(volumeInfo.has("pageCount"))
 								page_counts.add(volumeInfo.getString("pageCount"));
 							else
-								page_counts.add("N/A");
+								page_counts.add(PartnerAPI.Strings.NOT_AVAILABLE);
 							if(volumeInfo.has("averageRating"))
 								ratings.add(volumeInfo.getString("averageRating"));
 							else
@@ -110,7 +110,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							if(volumeInfo.has("description"))
 								descriptions.add(volumeInfo.getString("description"));
 							else
-								descriptions.add("N/A");
+								descriptions.add(PartnerAPI.Strings.NOT_AVAILABLE);
 
 							JSONObject image_links = null;
 							if(volumeInfo.has("imageLinks"))
@@ -129,9 +129,28 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							i++;
 						}
 						/*Todos os arrays estão preenchidos. Agora terão de ser ordenados por rating*/
+						/*Isto devia TODO e vai ser feito no servidor, porque aqui é estúpido*/
+						ArrayList<Double> ratings_int = new ArrayList<Double>();
+						ordered_ratings = new ArrayList<String>();
 						
-						//TODO algoritmo streets of the nice para ordenar, não me apetece agora fazer e deve-se arranjar
+						for(String rating : ratings){
+							if(!rating.equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
+								ratings_int.add(Double.parseDouble(rating));
+							}
+							else{
+								ratings_int.add(0.0);
+							}
+						}
 						
+						Collections.sort(ratings_int);
+						Collections.reverse(ratings_int);
+						
+						for(double rat : ratings_int){
+							if(rat == 0.0)
+								ordered_ratings.add(PartnerAPI.Strings.NOT_AVAILABLE);
+							else
+								ordered_ratings.add(String.valueOf(rat));
+						}
 						
 
 					} catch (JSONException e) {
@@ -139,7 +158,8 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 					}
 
 
-					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
+					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, 
+								ordered_ratings, page_counts, covers));
 
 				}
 
@@ -180,7 +200,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
 			String pages_book = page_counts.get(position);
-			String rating_book = ratings.get(position);
+			String rating_book = ordered_ratings.get(position);
 			String cover_book = covers.get(position);
 			String description = descriptions.get(position);
 
