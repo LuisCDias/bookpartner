@@ -995,7 +995,7 @@ containing a value of this type.
         public static final int abs__title=0x7f05001b;
         public static final int abs__titleDivider=0x7f05001c;
         public static final int abs__up=0x7f05000b;
-        public static final int action_settings=0x7f05004b;
+        public static final int action_settings=0x7f05004c;
         public static final int book_author=0x7f05003c;
         public static final int book_cover=0x7f05003b;
         public static final int book_info_layout=0x7f05003a;
@@ -1009,13 +1009,14 @@ containing a value of this type.
         public static final int div_book=0x7f050040;
         public static final int edit_query=0x7f050027;
         public static final int full_book_cover=0x7f050033;
+        public static final int genre_title=0x7f050048;
         public static final int gradient0=0x7f050039;
         public static final int gradient1=0x7f050047;
         public static final int homeAsUp=0x7f050006;
         public static final int listMode=0x7f050002;
-        public static final int menu_login=0x7f05004a;
-        public static final int menu_search=0x7f050049;
-        public static final int menu_settings=0x7f050048;
+        public static final int menu_login=0x7f05004b;
+        public static final int menu_search=0x7f05004a;
+        public static final int menu_settings=0x7f050049;
         public static final int mysixImg=0x7f050037;
         public static final int mysixText=0x7f050038;
         public static final int mysixlayout=0x7f050036;
@@ -1064,8 +1065,9 @@ containing a value of this type.
         public static final int book_view=0x7f030019;
         public static final int fragment_tabs_pager=0x7f03001a;
         public static final int list_books=0x7f03001b;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001c;
-        public static final int sherlock_spinner_item=0x7f03001d;
+        public static final int list_genres=0x7f03001c;
+        public static final int sherlock_spinner_dropdown_item=0x7f03001d;
+        public static final int sherlock_spinner_item=0x7f03001e;
     }
     public static final class menu {
         public static final int activity_lauch=0x7f0c0000;

@@ -25,6 +25,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import fe.up.pt.partner.R;
 import fragments.MainFragment;
+import fragments.MainFragment_Genres;
 import fragments.MainFragment_Recent;
 import fragments.MainFragment_Top;
 
@@ -68,7 +69,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
 				MainFragment_Recent.MainFragment_Recent_Aux.class, b);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Genre"),
-				MainFragment.MainFragmentAux.class, b);
+				MainFragment_Genres.MainFragment_Genres_Aux.class, b);
 		mActionBar.setSelectedNavigationItem(1);
 
 
@@ -106,13 +107,18 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 		if(searchManager!=null)
 		{
+			
 			// start the search with the appropriate searchable activity
 			// so we get the correct search hint in the search dialog
 			Bundle b = new Bundle();
-			b.putString("title", title);
+			title = "game of thrones";
+			b.putString("title",title);
+			Log.d("search", title);
 			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			//searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
-			return true;
+			if(title != null){
+				searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+				return true;
+			}
 		}
 		return false;
 	}

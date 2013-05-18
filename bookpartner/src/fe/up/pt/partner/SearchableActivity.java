@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -27,6 +28,7 @@ public class SearchableActivity extends SherlockFragmentActivity {
    
 		super.onCreate(savedInstanceState);
 
+		
 		mViewPager = new ViewPager(this);
 		mViewPager.setId(R.id.pager);
 		mViewPager.setBackgroundColor(Color.BLACK);
@@ -44,8 +46,8 @@ public class SearchableActivity extends SherlockFragmentActivity {
 		final String queryAction = queryIntent.getAction();
 
 		Bundle b = queryIntent.getBundleExtra(SearchManager.APP_DATA);
-		String type = b.getString("type");	//this is the search Type
-		useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+		//String type = b.getString("type");	//this is the search Type
+		/*useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
 		if(useMode.equals(PartnerAPI.Strings.USER_MODE))
 			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 
@@ -53,32 +55,29 @@ public class SearchableActivity extends SherlockFragmentActivity {
 			if (Intent.ACTION_SEARCH.equals(queryAction)) {
 				searchQuery=  doSearchWithIntent(queryIntent);
 			}
-		}
+		}*/
 
 
 
 
-		String title = b.getString("title");  // this is the category name
-		String query_from_Bundle = b.getString("query_from_Bundle");
-		String userName = b.getString("user"); //this is the user name to search
-		String rating = b.getString("rating"); //this is the minimum rating to look for
+		String title = b.getString("title");  // this is the book name
+		//String query_from_Bundle = b.getString("query_from_Bundle");
+		//String userName = b.getString("user"); //this is the user name to search
+		//String rating = b.getString("rating"); //this is the minimum rating to look for
 		Bundle b_query = new Bundle();
 		b_query.putString("searchQuery", searchQuery); 
 
-		b_query.putString("type", type);
+		//b_query.putString("type", type);
 		b_query.putString("title", title);   
-		b_query.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
-		b_query.putString(PartnerAPI.Strings.USER_TOKEN_BUNDLE, userToken); 
+		//b_query.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
+		//b_query.putString(PartnerAPI.Strings.USER_TOKEN_BUNDLE, userToken); 
 
-
-
-
-		String actionBarTitle = "Results For ";
-		actionBarTitle += searchQuery;
-		if(title!= null){
+		String actionBarTitle = "Results For '"+ title +"'";
+		//actionBarTitle += searchQuery;
+		/*if(title!= null){
 			actionBarTitle += " In Category " + title;
 
-		}
+		}*/
 
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);

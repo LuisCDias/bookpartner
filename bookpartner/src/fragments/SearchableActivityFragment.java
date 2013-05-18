@@ -32,7 +32,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 	private static int adapterFlag  = 0; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_browse);
 
@@ -47,20 +47,20 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 	public static class SearchableActivityFragmentAux extends SherlockListFragment {
 
 
-		public String useMode;
-		public String userToken;
-		private ArrayList<String> names;
-		private ArrayList<String> images;
-		private ArrayList<String> ids_offers;
-		private ArrayList<String> ids_users;
-		private ArrayList<String> owners;
+		//public String useMode;
+		//public String userToken;
 		private ArrayList<String> titles;
-		private ArrayList<String> texts;
+		private ArrayList<String> ids;
+		private ArrayList<String> authors;
+		private ArrayList<String> page_counts;
+		private ArrayList<String> ratings;
+		private ArrayList<String> covers;
+		private ArrayList<String> descriptions;
 		// private Bundle extras ;
 
 
 
-		private void searchForOffer(String URL) {
+		private void searchForBook(String URL) {
 
 
 			getActivity().getWindow().setSoftInputMode(
@@ -70,47 +70,93 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					JSONArray offers = (JSONArray) results[0];
+					Log.d("json", results[0].toString());
+					JSONObject book = (JSONObject) results[0];
 
+					authors = new ArrayList<String>();
 					titles = new ArrayList<String>();
-					texts = new ArrayList<String>();
-					images = new ArrayList<String>();
-					ids_offers = new ArrayList<String>();
-					owners = new ArrayList<String>();
-
+					ids = new ArrayList<String>();
+					page_counts = new ArrayList<String>();
+					ratings = new ArrayList<String>();
+					covers = new ArrayList<String>();
+					descriptions = new ArrayList<String>();
 
 					int i = 0;
-					while (!offers.isNull(i)) {
-						try {
 
-							JSONObject offer = offers.getJSONObject(i);
-							ids_offers.add(offer.getString("id").toString());
-							titles.add(offer.getString("title").toString());
-							texts.add(offer.getString("description").toString());
-							images.add(offer.getString("media").toString());
-							owners.add(offer.getString("owner").toString());
+					try {
 
-						} catch (JSONException e) {
-							
-							e.printStackTrace();
+						JSONArray items = book.getJSONArray("items");
+						while (!items.isNull(i)) {
+
+							JSONObject item = items.getJSONObject(i);
+
+							ids.add(item.getString("id"));
+							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
+							titles.add(volumeInfo.getString("title"));
+
+							JSONArray authors_array = volumeInfo.getJSONArray("authors");
+
+							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
+							authors.add(authors_array.get(0).toString());
+
+							if(volumeInfo.has("pageCount"))
+								page_counts.add(volumeInfo.getString("pageCount"));
+							else
+								page_counts.add("N/A");
+							if(volumeInfo.has("averageRating"))
+								ratings.add(volumeInfo.getString("averageRating"));
+							else
+								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+
+							/* Para evitar o facto de poder vir com uma descrição vazia,
+							 * ou não ter.*/
+							if(volumeInfo.has("description"))
+								descriptions.add(volumeInfo.getString("description"));
+							else
+								descriptions.add("N/A");
+
+							JSONObject image_links = null;
+							if(volumeInfo.has("imageLinks"))
+								image_links = volumeInfo.getJSONObject("imageLinks");
+
+							if(image_links != null){
+
+								if(image_links.has("thumbnail")) 
+									covers.add(image_links.getString("thumbnail"));
+								else
+									covers.add("no cover");
+							}
+							else
+								covers.add("no cover");
+
+							i++;
 						}
-						i++;
+
+
+					} catch (JSONException e) {
+						e.printStackTrace();
 					}
 
-					//setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners, adapterFlag));
+
+					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
 
 				}
 
 				@Override
 				public void onError(ERROR_TYPE error) {
-					Toast.makeText(getActivity(), error.toString(),
-							Toast.LENGTH_LONG).show();
+
+					if(error.toString().equals(ERROR_TYPE.NETWORK))
+						Toast.makeText(getActivity(), PartnerAPI.Strings.SERVER_CONNECTION,
+								Toast.LENGTH_LONG).show();
+					else if(error.toString().equals(ERROR_TYPE.GENERAL))
+						Toast.makeText(getActivity(), PartnerAPI.Strings.CHECK_CONNECTION,
+								Toast.LENGTH_LONG).show();
 				}
 			});
 			// }
 		}
 
-		private void multiSearch(String URL) {
+		/*private void multiSearch(String URL) {
 
 			getActivity().getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -140,7 +186,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 							owners.add(offer.getString("owner").toString());
 
 						} catch (JSONException e) {
-							
+
 							e.printStackTrace();
 						}
 						i++;
@@ -161,7 +207,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 				}
 			});
 			// }
-		}
+		}*/
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 
@@ -171,93 +217,45 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 
 			//get parent extras
 			Bundle b= super.getArguments();
-			useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
+			/*useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
 			if(useMode.equals(PartnerAPI.Strings.USER_MODE))
 				userToken = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
-			
-			
-			adapterFlag = b.getInt("adapterFlag");
-			searchType = b.getString("type");
+*/
+			String terms = b.getString("title");
+			String novo = terms.replace(" ", "+");
+			//adapterFlag = b.getInt("adapterFlag");
+			//searchType = b.getString("type");
 
-
-
-			if(searchType.equals("offer")){
-				String query =b.getString("searchQuery");
-				String title = b.getString("title");
-				query = query.trim();
-				// if(checkIfMoreThanOneKeyword(query))
-				query= query.replace(' ', '+');
-				//AsyncTasks to search something
-				if(title == null)//search without categorie filter
-					searchForOffer("offers/search.json?name="+ query);
-				else//search with categorie filter 
-				{
-					title=title.trim();
-					searchForOffer("offers/search.json?name=" +query + "&cat="+ title);
-
-				}
-			}
-			else
-				if(searchType.equals("multi_search")){
-					//multiSearchs
-					String URL_to_search = "offers/search.json?";
-					String query_from_bundle =b.getString("query_from_Bundle").trim();
-					String title =b.getString("title");
-					String user =b.getString("user").trim();					
-					String rating =b.getString("rating");
-
-					Log.d("query_from_Bundle", query_from_bundle);
-					Log.d("title", title);
-					Log.d("user", user);
-					Log.d("rating", rating);
-
-
-					if(!(query_from_bundle.equals(""))){
-						URL_to_search += "name=";
-						URL_to_search += query_from_bundle;
-						URL_to_search+="&";
-					}
-					if(!(title.equals("all categories"))){
-						URL_to_search += "cat=";
-						URL_to_search += title;
-						URL_to_search+="&";
-					}
-					if(!(user.equals(""))){
-						URL_to_search += "username=";
-						URL_to_search += user;
-						URL_to_search+="&";
-					}
-					if(rating.equals("0")){
-						URL_to_search += "rating=";
-						URL_to_search += rating;
-						URL_to_search+="&";
-					}
-
-					if(URL_to_search.endsWith("&")){
-						URL_to_search= URL_to_search.substring(0, URL_to_search.length()-1);
-					}
-
-					multiSearch(URL_to_search);
-				}
+			searchForBook("https://www.googleapis.com/books/v1/volumes?q="+novo+"&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 
 		}
 
 		@Override
 		public void onListItemClick(ListView l, View v, int position, long id) {
 
-			String id_offer= ids_offers.get(position);
-			String title_offer = titles.get(position);
-			String owner_offer = owners.get(position);
+			String id_book = ids.get(position);
+			String title_book = titles.get(position);
+			String author_book = authors.get(position);
+			String pages_book = page_counts.get(position);
+			String rating_book = ratings.get(position);
+			String cover_book = covers.get(position);
+			String description = descriptions.get(position);
 			
-			
-
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
-			intent.putExtra("id", id_offer);
-			intent.putExtra("title", title_offer);
-			intent.putExtra("owner", owner_offer);
-			intent.putExtra("adapterFlag", adapterFlag);
-			intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			startActivity(intent);
+
+			intent.putExtra("id", id_book);
+			intent.putExtra("title", title_book);
+			intent.putExtra("author", author_book);
+			intent.putExtra("page_count", pages_book);
+			intent.putExtra("rating", rating_book);
+			intent.putExtra("cover", cover_book);
+			intent.putExtra("description", description);
+			
+			//include the user id
+			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
+			
+			startActivity(intent);	
+
 
 		}
 
