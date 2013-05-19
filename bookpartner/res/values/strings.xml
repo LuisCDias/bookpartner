@@ -9,7 +9,7 @@
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="title_activity_book_panel">BookPanelActivity</string>
     <string name="search_activitty">search_activity</string>
-    <string name="search_something">Type title/author/isbn</string>
+    <string name="search_something">Type book title</string>
     <string name="title_activity_full_cover">FullCoverActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>

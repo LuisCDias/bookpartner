@@ -111,14 +111,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 			// start the search with the appropriate searchable activity
 			// so we get the correct search hint in the search dialog
 			Bundle b = new Bundle();
-			title = "game of thrones";
-			b.putString("title",title);
-			Log.d("search", title);
-			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			if(title != null){
-				searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
-				return true;
-			}
+
+			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+			return true;
 		}
 		return false;
 	}

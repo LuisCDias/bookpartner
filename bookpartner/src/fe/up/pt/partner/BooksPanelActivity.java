@@ -25,7 +25,7 @@ import fragments.ReviewsFragment;
 
 public class BooksPanelActivity extends SherlockFragmentActivity implements TabListener {
 
-	ViewPager mViewPager;
+	public ViewPager mViewPager;
 	ActionBar mActionBar;
 	TabsAdapter mTabsAdapter;
 	Bundle extras ;

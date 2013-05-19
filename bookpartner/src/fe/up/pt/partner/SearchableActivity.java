@@ -41,44 +41,31 @@ public class SearchableActivity extends SherlockFragmentActivity {
 
 
 
-		String searchQuery = null;
+		String search_query = null;
 		final Intent queryIntent = getIntent();
 		final String queryAction = queryIntent.getAction();
 
 		Bundle b = queryIntent.getBundleExtra(SearchManager.APP_DATA);
-		//String type = b.getString("type");	//this is the search Type
+
 		/*useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
 		if(useMode.equals(PartnerAPI.Strings.USER_MODE))
 			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
+		 */
+		
+		if (Intent.ACTION_SEARCH.equals(queryAction)) {
+			search_query=  doSearchWithIntent(queryIntent);
+		}
+		
 
-		if(!(type.equals("multi_search"))){
-			if (Intent.ACTION_SEARCH.equals(queryAction)) {
-				searchQuery=  doSearchWithIntent(queryIntent);
-			}
-		}*/
+		Log.d("query", search_query);
 
-
-
-
-		String title = b.getString("title");  // this is the book name
 		//String query_from_Bundle = b.getString("query_from_Bundle");
-		//String userName = b.getString("user"); //this is the user name to search
-		//String rating = b.getString("rating"); //this is the minimum rating to look for
+
 		Bundle b_query = new Bundle();
-		b_query.putString("searchQuery", searchQuery); 
+		b_query.putString("search_query", search_query); //query keywords
 
-		//b_query.putString("type", type);
-		b_query.putString("title", title);   
-		//b_query.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode); 
-		//b_query.putString(PartnerAPI.Strings.USER_TOKEN_BUNDLE, userToken); 
 
-		String actionBarTitle = "Results For '"+ title +"'";
-		//actionBarTitle += searchQuery;
-		/*if(title!= null){
-			actionBarTitle += " In Category " + title;
-
-		}*/
-
+		String actionBarTitle = "Results For '"+ search_query +"'";
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText(actionBarTitle),

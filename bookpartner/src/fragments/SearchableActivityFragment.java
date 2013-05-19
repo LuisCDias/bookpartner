@@ -22,6 +22,8 @@ import android.widget.Toast;
 import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
+import fe.up.pt.partner.SearchableActivity;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 
@@ -69,7 +71,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			PartnerAPI.requestURL(URL, new ResponseCommand() {
 
 				public void onResultReceived(Object... results) {
-
+					
 					Log.d("json", results[0].toString());
 					JSONObject book = (JSONObject) results[0];
 
@@ -156,58 +158,6 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			// }
 		}
 
-		/*private void multiSearch(String URL) {
-
-			getActivity().getWindow().setSoftInputMode(
-					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-			PartnerAPI.requestURL(URL, new ResponseCommand() {
-
-				public void onResultReceived(Object... results) {
-
-					JSONArray offers = (JSONArray) results[0];
-
-					titles = new ArrayList<String>();
-					texts = new ArrayList<String>();
-					images = new ArrayList<String>();
-					ids_offers = new ArrayList<String>();
-					owners = new ArrayList<String>();
-
-
-					int i = 0;
-					while (!offers.isNull(i)) {
-						try {
-
-							JSONObject offer = offers.getJSONObject(i);
-							ids_offers.add(offer.getString("id").toString());
-							titles.add(offer.getString("title").toString());
-							texts.add(offer.getString("description").toString());
-							images.add(offer.getString("media").toString());
-							owners.add(offer.getString("owner").toString());
-
-						} catch (JSONException e) {
-
-							e.printStackTrace();
-						}
-						i++;
-					}
-
-					//setListAdapter(new ListAdapter(getActivity(), titles, texts, images, owners,adapterFlag));
-
-				}
-
-				@Override
-				public void onError(ERROR_TYPE error) {
-					if(error.toString().equals(ERROR_TYPE.NETWORK))
-						Toast.makeText(getActivity(), PartnerAPI.Strings.SERVER_CONNECTION,
-								Toast.LENGTH_LONG).show();
-					else if(error.toString().equals(ERROR_TYPE.GENERAL))
-						Toast.makeText(getActivity(), PartnerAPI.Strings.CHECK_CONNECTION,
-								Toast.LENGTH_LONG).show();
-				}
-			});
-			// }
-		}*/
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 
@@ -221,12 +171,10 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 			if(useMode.equals(PartnerAPI.Strings.USER_MODE))
 				userToken = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 */
-			String terms = b.getString("title");
-			String novo = terms.replace(" ", "+");
-			//adapterFlag = b.getInt("adapterFlag");
-			//searchType = b.getString("type");
+			String terms = b.getString("search_query");
+			String api_ready_terms = terms.replace(" ", "+");
 
-			searchForBook("https://www.googleapis.com/books/v1/volumes?q="+novo+"&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
+			searchForBook("https://www.googleapis.com/books/v1/volumes?q="+api_ready_terms+"&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 
 		}
 
