@@ -96,10 +96,15 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
 							titles.add(volumeInfo.getString("title"));
 
-							JSONArray authors_array = volumeInfo.getJSONArray("authors");
+							JSONArray authors_array = null;
 
-							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
-							authors.add(authors_array.get(0).toString());
+							if(volumeInfo.has("authors")){
+								authors_array = volumeInfo.getJSONArray("authors");
+								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
+								authors.add(authors_array.get(0).toString());
+							}
+							else
+								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
 
 							if(volumeInfo.has("pageCount"))
 								page_counts.add(volumeInfo.getString("pageCount"));
@@ -115,22 +120,22 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 							if(volumeInfo.has("description"))
 								descriptions.add(volumeInfo.getString("description"));
 							else
-								descriptions.add("N/A");
-
+								descriptions.add(PartnerAPI.Strings.NO_DESCRIPTION_AVAILABLE);
+							
 							JSONObject image_links = null;
 							if(volumeInfo.has("imageLinks"))
 								image_links = volumeInfo.getJSONObject("imageLinks");
-
+							
 							if(image_links != null){
-
+							
 								if(image_links.has("thumbnail")) 
 									covers.add(image_links.getString("thumbnail"));
 								else
-									covers.add("no cover");
+									covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
 							}
 							else
-								covers.add("no cover");
-
+								covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
+							
 							i++;
 						}
 

@@ -55,6 +55,10 @@ public class PartnerAPI {
     	String FLAG_ADAPTER_BUNDLER = "flagAdapter";
     	String LAUNCH_FLAG_BUNDLE = "launcheFlag";
     	String NO_RATING_AVAILABLE = "No rating available";
+    	String NO_AUTHOR_AVAILABLE = "Unknown author";
+    	String NO_COVER_AVAILABLE = "Thumbnail";
+    	String NO_DESCRIPTION_AVAILABLE = "No description available";
+    	
     	String NOT_AVAILABLE = "N/A";
     }
     
