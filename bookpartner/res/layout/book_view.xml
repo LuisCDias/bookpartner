@@ -91,6 +91,17 @@
                     android:text="No rating available"
                     android:textSize="14dp" 
                     android:visibility="gone"/>
+                
+                <ImageView
+                android:id="@+id/twitter_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:onClick="buttonLogin"
+                android:gravity="bottom"
+                android:src="@drawable/twitter_ic" />
             </LinearLayout>
         </LinearLayout>
 
