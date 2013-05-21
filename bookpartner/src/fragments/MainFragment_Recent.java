@@ -53,9 +53,6 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 		private ArrayList<String> ratings;
 		private ArrayList<String> covers;
 		private ArrayList<String> descriptions;
-		
-		
-		Bundle b;
 
 
 		private void searchIt(String URL) {
@@ -162,9 +159,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
-			b= super.getArguments();
-			
-			
+
 			// remove divider
 			this.getListView().setDividerHeight(0);
 

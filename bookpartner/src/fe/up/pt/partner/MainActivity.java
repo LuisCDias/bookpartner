@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -46,12 +47,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	protected void onCreate(Bundle savedInstanceState) {
 
 		setTheme(R.style.Theme_Sherlock);
-		super.onCreate(savedInstanceState);
-		
-		Bundle b = new Bundle();
-		
-		b.putString("book", "Awesome book");
-		
+		super.onCreate(savedInstanceState);		
 
 		mViewPager = new ViewPager(this);
 		mViewPager.setId(R.id.pager);
@@ -59,17 +55,17 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		setContentView(mViewPager);
 
 		mActionBar = getSupportActionBar();
-		mActionBar.setDisplayShowTitleEnabled(false);
+		mActionBar.setDisplayShowTitleEnabled(true);
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
-				MainFragment_Top.MainFragment_Top_Aux.class, b);
+				MainFragment_Top.MainFragment_Top_Aux.class, null);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
-				MainFragment_Recent.MainFragment_Recent_Aux.class, b);
+				MainFragment_Recent.MainFragment_Recent_Aux.class, null);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Genre"),
-				MainFragment_Genres.MainFragment_Genres_Aux.class, b);
+				MainFragment_Genres.MainFragment_Genres_Aux.class, null);
 		mActionBar.setSelectedNavigationItem(1);
 
 
@@ -136,6 +132,33 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		}
 	}
 
+	public void getGenreBooks(View v){
+		
+		TextView genre = null;
+		
+		switch(v.getId()) {
+			case R.id.genre_title_1:
+				genre = (TextView)v.findViewById(R.id.genre_title_1);
+				Log.d("GENRE", genre.getText()+"");
+								
+				break;
+			case R.id.genre_title_2:
+				genre = (TextView)v.findViewById(R.id.genre_title_2);
+				Log.d("GENRE", genre.getText()+"");
+				
+				break;
+			case R.id.genre_title_3:
+				genre = (TextView)v.findViewById(R.id.genre_title_3);
+				Log.d("GENRE", genre.getText()+"");
+				
+				break;
+				
+		}
+		Intent intent = new Intent(this, GenreBooksActivity.class);
+		intent.putExtra("genre", genre.getText()+"");
+		startActivity(intent);
+	}
+	
 	/*public void openFullCover(View v){
 		
 		MainFragment_Recent.openFullCover(v, this);

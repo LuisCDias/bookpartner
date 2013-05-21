@@ -49,7 +49,7 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		setContentView(mViewPager);
 
 		mActionBar = getSupportActionBar();
-		mActionBar.setDisplayShowTitleEnabled(false);
+		mActionBar.setDisplayShowTitleEnabled(true);
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 

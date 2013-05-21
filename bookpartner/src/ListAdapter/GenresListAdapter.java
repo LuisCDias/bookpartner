@@ -24,11 +24,10 @@ public class GenresListAdapter extends BaseAdapter {
     public ImageLoader imageLoader; 
     
     public GenresListAdapter(Activity a, ArrayList<String> gen) {
-        activity = a;
+
+    	activity = a;
         genres=gen;
 
-        
-        
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         imageLoader=new ImageLoader(activity.getApplicationContext());
     }
@@ -48,11 +47,24 @@ public class GenresListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi=convertView;
         if(convertView==null)
-            vi = inflater.inflate(R.layout.list_genres, null);
-     
-        TextView genre = (TextView)vi.findViewById(R.id.genre_title);
-        
-        genre.setText(genres.get(position));
+            vi = inflater.inflate(R.layout.list_genres_grid, null);
+ 
+    	TextView grid_1_text = (TextView)vi.findViewById(R.id.genre_title_1);
+    	TextView grid_2_text = (TextView)vi.findViewById(R.id.genre_title_2);
+    	TextView grid_3_text = (TextView)vi.findViewById(R.id.genre_title_3);
+
+    	String grid_1 = genres.get(position).substring(0, genres.get(position).indexOf(','));
+    	String resto = genres.get(position).substring(genres.get(position).indexOf(',')+1, genres.get(position).length());
+    	
+    	String grid_2 = resto.substring(0, resto.indexOf(',')); 	
+    	resto = resto.substring(resto.indexOf(',')+1,resto.length());
+    	
+    	
+    	grid_1_text.setText(grid_1);
+    	grid_2_text.setText(grid_2);
+    	grid_3_text.setText(resto);
+
+        	
         
         return vi;
     }

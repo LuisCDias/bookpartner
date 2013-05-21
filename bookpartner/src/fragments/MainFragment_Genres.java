@@ -47,25 +47,21 @@ public class MainFragment_Genres extends SherlockFragmentActivity {
 
 	public static class MainFragment_Genres_Aux extends SherlockListFragment {
 
-		private ArrayList<String> genres = new ArrayList<String>();
-		
-		
-		Bundle b;
-
+		private ArrayList<String> genres;
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
-			super.onActivityCreated(savedInstanceState);
-			b= super.getArguments();
 			
-			
+			super.onActivityCreated(savedInstanceState);	
+			genres = new ArrayList<String>();
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
 			//searchIt("https://www.googleapis.com/books/v1/volumes?q=a+song+of+ice+and+fire&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
-			genres.add("Drama");
-			genres.add("Fantasia");
+			genres.add("Drama,Fantasy,Thriller");
+			genres.add("Science,History,Mystery");
+		
 			setListAdapter(new GenresListAdapter(getActivity(),genres));
 
 
