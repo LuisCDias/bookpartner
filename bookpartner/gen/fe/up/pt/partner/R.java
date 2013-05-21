@@ -942,18 +942,17 @@ containing a value of this type.
         public static final int ic_action_search=0x7f020074;
         public static final int ic_launcher=0x7f020075;
         public static final int layoutstyle=0x7f020076;
-        public static final int open_book=0x7f020077;
-        public static final int pressed_background_seis=0x7f020078;
-        public static final int search=0x7f020079;
-        public static final int search_cinza=0x7f02007a;
-        public static final int settings=0x7f02007b;
-        public static final int settings_cinza=0x7f02007c;
-        public static final int spinner_ab_default_seis=0x7f02007d;
-        public static final int spinner_ab_disabled_seis=0x7f02007e;
-        public static final int spinner_ab_focused_seis=0x7f02007f;
-        public static final int spinner_ab_pressed_seis=0x7f020080;
-        public static final int spinner_background_ab_seis=0x7f020081;
-        public static final int star=0x7f020082;
+        public static final int pressed_background_seis=0x7f020077;
+        public static final int search=0x7f020078;
+        public static final int search_cinza=0x7f020079;
+        public static final int settings=0x7f02007a;
+        public static final int settings_cinza=0x7f02007b;
+        public static final int spinner_ab_default_seis=0x7f02007c;
+        public static final int spinner_ab_disabled_seis=0x7f02007d;
+        public static final int spinner_ab_focused_seis=0x7f02007e;
+        public static final int spinner_ab_pressed_seis=0x7f02007f;
+        public static final int spinner_background_ab_seis=0x7f020080;
+        public static final int star=0x7f020081;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f050022;

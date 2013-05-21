@@ -28,11 +28,11 @@ import com.actionbarsherlock.app.SherlockListFragment;
 
 
 public class MainFragment_Recent extends SherlockFragmentActivity {
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 
 		// Create the list fragment and add it as our sole content.
@@ -61,7 +61,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
 			PartnerAPI.requestURL(URL, new ResponseCommand() {
-				
+
 				public void onResultReceived(Object... results) {
 
 					Log.d("json", results[0].toString());
@@ -78,18 +78,18 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 					int i = 0;
 
 					try {
-						
+
 						JSONArray items = book.getJSONArray("items");
 						while (!items.isNull(i)) {
 
 							JSONObject item = items.getJSONObject(i);
-							
+
 							ids.add(item.getString("id"));
 							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
 							titles.add(volumeInfo.getString("title"));
-							
+
 							JSONArray authors_array = null;
-							
+
 							if(volumeInfo.has("authors")){
 								authors_array = volumeInfo.getJSONArray("authors");
 								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
@@ -97,8 +97,8 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 							}
 							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-									
-							
+
+
 							if(volumeInfo.has("pageCount"))
 								page_counts.add(volumeInfo.getString("pageCount"));
 							else
@@ -107,20 +107,20 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 								ratings.add(volumeInfo.getString("averageRating"));
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
-							
+
 							/* Para evitar o facto de poder vir com uma descrição vazia,
 							 * ou não ter.*/
 							if(volumeInfo.has("description"))
 								descriptions.add(volumeInfo.getString("description"));
 							else
 								descriptions.add(PartnerAPI.Strings.NO_DESCRIPTION_AVAILABLE);
-							
+
 							JSONObject image_links = null;
 							if(volumeInfo.has("imageLinks"))
 								image_links = volumeInfo.getJSONObject("imageLinks");
-							
+
 							if(image_links != null){
-							
+
 								if(image_links.has("thumbnail")) 
 									covers.add(image_links.getString("thumbnail"));
 								else
@@ -128,23 +128,23 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 							}
 							else
 								covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-							
+
 							i++;
 						}
-						
+
 
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					
+
 					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
 
 				}
 
 				@Override
 				public void onError(ERROR_TYPE error) {
-					
+
 					if(error.toString().equals(ERROR_TYPE.NETWORK))
 						Toast.makeText(getActivity(), PartnerAPI.Strings.SERVER_CONNECTION,
 								Toast.LENGTH_LONG).show();
@@ -154,7 +154,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 				}
 			});
 			// }
-	}
+		}
 
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
@@ -171,7 +171,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 
 		@Override
 		public void onListItemClick(ListView l, View v, int position, long id) {
-			
+
 			String id_book = ids.get(position);
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
@@ -179,7 +179,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 			String rating_book = ratings.get(position);
 			String cover_book = covers.get(position);
 			String description = descriptions.get(position);
-			
+
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 
 			intent.putExtra("id", id_book);
@@ -189,26 +189,26 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 			intent.putExtra("rating", rating_book);
 			intent.putExtra("cover", cover_book);
 			intent.putExtra("description", description);
-			
+
 			//include the user id
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			
+
 			startActivity(intent);	
 
 		}
 
 	}
 	/*public static void openFullCover(View v, Context ctx){
-		
+
 		switch(v.getId()){
-		
+
 		case R.id.book_cover:
 			Log.d("BOOK", "COVER");
-			
+
 			Intent intent = new Intent(ctx, FullCoverActivity.class);
 			v.get
 			break;
-	
+
 		}
 	}*/
 }
