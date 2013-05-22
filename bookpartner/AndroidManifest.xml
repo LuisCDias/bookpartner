@@ -37,13 +37,8 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-            <intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="book-partner-to-twitter" />
-			</intent-filter>
         </activity>
         <activity
             android:name="fe.up.pt.partner.GenreBooksActivity"
@@ -87,6 +82,24 @@
             android:name="fe.up.pt.partner.FullCoverActivity"
             android:label="@string/title_activity_full_cover" >
         </activity>
+        
+        <activity
+            android:name="fe.up.pt.partner.TwitterActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+            <intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="book" />
+			</intent-filter>
+        </activity>
+        
     </application>
 
     <supports-screens
@@ -94,6 +107,7 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
-        android:smallScreens="true" />
+        android:smallScreens="true"
+         />
 
 </manifest>

@@ -99,7 +99,7 @@
                 android:layout_weight="0.5"
                 android:adjustViewBounds="true"
                 android:clickable="true"
-                android:onClick="buttonLogin"
+                android:onClick="shareTwitter"
                 android:gravity="bottom"
                 android:src="@drawable/twitter_ic" />
             </LinearLayout>
