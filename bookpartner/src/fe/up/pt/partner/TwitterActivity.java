@@ -110,6 +110,7 @@ public class TwitterActivity extends Activity{
 	public void buttonTweet(View v) {
 		Log.i(TAG, "Tweet Pressed");
 		tweetMessage();
+		this.finish();
 	}
 
 	/**
@@ -152,6 +153,7 @@ public class TwitterActivity extends Activity{
 		
 		enableTweetButton();
 		tweetMessage();
+		this.finish();
 	}
 
 	/**
@@ -204,10 +206,8 @@ public class TwitterActivity extends Activity{
 			// Set the content view back after we changed to a webview
 			//setContentView(R.layout.activity_main);
 			
-			enableTweetButton();
 			tweetMessage();
-			Intent intent = new Intent(this, BooksPanelActivity.class );
-			startActivity(intent);
+			this.finish();
 			
 		} catch (TwitterException e) {
 			Toast.makeText(this, "Twitter auth error x01, try again later", Toast.LENGTH_SHORT).show();
