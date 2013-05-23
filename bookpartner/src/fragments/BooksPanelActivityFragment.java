@@ -13,6 +13,7 @@ import ListAdapter.ImageLoader;
 import ListAdapter.ListAdapter;
 import ListAdapter.BooksAdapter;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fe.up.pt.partner.BooksPanelActivity;
+import fe.up.pt.partner.ComposeMessagePopUpActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 
@@ -48,11 +50,11 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 	public static class BooksPanelActivityFragmentAux extends SherlockListFragment {
 
-		private ArrayList<String> titles;
+		private static ArrayList<String> titles;
 		private ArrayList<String> ids;
-		private ArrayList<String> authors;
+		private static ArrayList<String> authors;
 		private ArrayList<String> page_counts;
-		private ArrayList<String> ratings;
+		private static ArrayList<String> ratings;
 		private ArrayList<String> covers;
 		private ArrayList<String> covers_hd;
 		private ArrayList<String> descriptions;
@@ -190,7 +192,25 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 		}
 
+		
+		public static void shareTwitter(View v, Context ctx){
 
+			//buttonLogin(v);
+			//buttonTweet(v);
+			//Intent intent = new Intent(this, TwitterActivity.class );
+			Intent intent = new Intent(ctx, ComposeMessagePopUpActivity.class );
+			
+			intent.putExtra("title", titles.get(0));
+			intent.putExtra("author", authors.get(0));
+			intent.putExtra("rating", ratings.get(0));
+			
+			Log.d("title", titles.get(0));
+			Log.d("author", authors.get(0));
+			Log.d("rating", ratings.get(0));
+			
+			ctx.startActivity(intent);
+		}
+		
 		/*@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

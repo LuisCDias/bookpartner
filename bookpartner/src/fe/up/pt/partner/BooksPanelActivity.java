@@ -130,9 +130,12 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 
 		//buttonLogin(v);
 		//buttonTweet(v);
-		Intent intent = new Intent(this, TwitterActivity.class );
+		//Intent intent = new Intent(this, TwitterActivity.class );
+		//Intent intent = new Intent(this, ComposeMessagePopUpActivity.class );
 		
-		startActivity(intent);
+		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareTwitter(v, this);
+		
+		//startActivity(intent);
 	}
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 

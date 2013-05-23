@@ -26,6 +26,7 @@ public class PartnerAPI {
     }
     public interface Strings{
     	
+    	String CONFIRMATION_POPUP_BUNDLE = "confirmation_action";
     	String htmlBlack = "<font  color=black \\>";
     	String htmlGreen = "<font  color=green \\>";
     	String htmlRed= "<font  color=red \\>";

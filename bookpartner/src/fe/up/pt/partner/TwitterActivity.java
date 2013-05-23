@@ -43,6 +43,7 @@ public class TwitterActivity extends Activity{
 	//private Button mLoginButton;
 	//private Button mTweetButton;
 
+	Bundle b;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,9 @@ public class TwitterActivity extends Activity{
 		Log.i(TAG, "Loading TweetToTwitterActivity");
 		//setContentView(R.layout.activity_main);
 		
+		b = getIntent().getExtras();
 		
+		Log.d("texto tweet", b.getString("tweet"));
 		
 		// Create a new shared preference object to remember if the user has
 		// already given us permission

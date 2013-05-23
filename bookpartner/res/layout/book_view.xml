@@ -29,6 +29,7 @@
                 android:src="@drawable/default_book" />
 
             <LinearLayout
+                android:id="@+id/book_data_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -61,23 +62,25 @@
                     android:text="Page Count"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
-                
+
                 <!-- when rating is available -->
+
                 <RatingBar
-                    style = "?android:attr/ratingBarStyleSmall"
-	                android:id="@+id/book_rating_bar"
-	                android:layout_marginLeft="5dp"
+                    android:id="@+id/book_rating_bar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-	                android:layout_height="0dp"
-	                android:numStars="5"
-	                android:layout_width="wrap_content"
-	                android:layout_weight="0.1"
-	                android:rating="0"
-	                android:visibility="visible" />
-               
+                    android:layout_weight="0.1"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:visibility="visible" />
+
                 <!-- when no rating is available -->
+
                 <TextView
                     android:id="@+id/book_rating_text"
                     android:layout_width="wrap_content"
@@ -87,21 +90,21 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.1"
                     android:gravity="left"
-                    android:textColor="@color/white"
                     android:text="No rating available"
-                    android:textSize="14dp" 
-                    android:visibility="gone"/>
-                
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:visibility="gone" />
+
                 <ImageView
-                android:id="@+id/twitter_ic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:adjustViewBounds="true"
-                android:clickable="true"
-                android:onClick="shareTwitter"
-                android:gravity="bottom"
-                android:src="@drawable/twitter_ic" />
+                    android:id="@+id/twitter_ic"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:adjustViewBounds="true"
+                    android:layout_marginTop="50dp"
+                    android:clickable="true"
+                    android:gravity="bottom"
+                    android:onClick="shareTwitter"
+                    android:src="@drawable/twitter_button" />
             </LinearLayout>
         </LinearLayout>
 
@@ -131,9 +134,6 @@
                 android:textColor="@android:color/white" >
             </TextView>
         </LinearLayout>
-        
-        
-        
     </RelativeLayout>
 
 </ScrollView>
