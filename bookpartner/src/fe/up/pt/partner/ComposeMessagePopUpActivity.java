@@ -57,16 +57,16 @@ public class ComposeMessagePopUpActivity extends Activity {
 
 	public void buildPane(final Activity a){
 		final LayoutInflater inflater = (LayoutInflater)a.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
+		final View vi =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
 
-		EditText tweet_text = (EditText) v.findViewById(R.id.tweet_text);
+		EditText tweet_text = (EditText) vi.findViewById(R.id.tweet_text);
 		
-		String tweet_message = "Checkout this great book: "+title+" by "+author+"! "+
-							   "It has a average rating of "+rating+" by Google Books and Goodreads!";
+		final String tweet_message = "Great book: "+title+" by "+author+"! "+
+							   "Average rating of "+rating+"! on BookPartner";
 		tweet_text.setHint(tweet_message);
 		
-		Button okBtn = (Button) v.findViewById(R.id.composePopUpYesBtn);
-		Button cancelBtn = (Button) v.findViewById(R.id.composePopUpNoBtn);
+		Button okBtn = (Button) vi.findViewById(R.id.composePopUpYesBtn);
+		Button cancelBtn = (Button) vi.findViewById(R.id.composePopUpNoBtn);
 
 		okBtn.setOnClickListener(new OnClickListener() {
 
@@ -75,21 +75,21 @@ public class ComposeMessagePopUpActivity extends Activity {
 				
 				Intent intent = new Intent(v.getContext(), TwitterActivity.class );
 				
-				v =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
-				EditText tweet_text = (EditText) v.findViewById(R.id.tweet_text);
+				//v =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
+				EditText tweet_text = (EditText) vi.findViewById(R.id.tweet_text);
 				String texto = tweet_text.getText().toString();
-				String hint = tweet_text.getHint().toString();
 				
 				if(texto.matches("")){
-					Log.d("SEM", "TEXTO");
-					intent.putExtra("tweet", hint);
+					intent.putExtra("tweet", tweet_message);
 				}
 				else{
-					intent.putExtra("tweet", texto);
+					String info = "["+ title + " by "+author+" ("+rating+")]";
+					String novo_texto = texto+"\n"+ info;
+					intent.putExtra("tweet", novo_texto);
 				}
 				
 				v.getContext().startActivity(intent);
-
+				a.finish();
 			}
 		});
 
@@ -103,7 +103,7 @@ public class ComposeMessagePopUpActivity extends Activity {
 		});
 		
 		
-		a.setContentView(v);
+		a.setContentView(vi);
 
 	}
 	

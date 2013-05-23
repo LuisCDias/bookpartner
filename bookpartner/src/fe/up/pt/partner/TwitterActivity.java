@@ -53,7 +53,7 @@ public class TwitterActivity extends Activity{
 		
 		b = getIntent().getExtras();
 		
-		Log.d("texto tweet", b.getString("tweet"));
+		
 		
 		// Create a new shared preference object to remember if the user has
 		// already given us permission
@@ -93,7 +93,7 @@ public class TwitterActivity extends Activity{
 		Log.i(TAG, "Login Pressed");
 		if (mPrefs.contains(PREF_ACCESS_TOKEN)) {
 			Log.i(TAG, "Repeat User");
-			loginAuthorisedUser();
+			loginAuthorisedUser();Log.d("texto tweet", b.getString("tweet"));
 		} else {
 			Log.i(TAG, "New User");
 			loginNewUser();
@@ -228,7 +228,13 @@ public class TwitterActivity extends Activity{
 	 */
 	private void tweetMessage() {
 		try {
-			mTwitter.updateStatus("Test - Olha o BookPartner aqui nas redes sociais :D");
+			b = getIntent().getExtras();
+			
+			Log.d("texto tweet", b.getString("tweet").length()+"");
+			String texto = b.getString("tweet");
+			
+			
+			mTwitter.updateStatus(texto);
 
 			Toast.makeText(this, "Tweet Successful!", Toast.LENGTH_SHORT).show();
 		} catch (TwitterException e) {
