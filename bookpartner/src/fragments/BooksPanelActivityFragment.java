@@ -32,6 +32,7 @@ import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.ComposeMessagePopUpActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
+import fragments.MainFragment_Recent.MainFragment_Recent_Aux;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -45,7 +46,14 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.book_view);
+		
+		// Create the list fragment and add it as our sole content.		
+		if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
+			BooksPanelActivityFragmentAux list = new BooksPanelActivityFragmentAux();
+			getSupportFragmentManager().beginTransaction()
+			.add(android.R.id.content, list).commit();
+		}
+				
 	}
 
 	public static class BooksPanelActivityFragmentAux extends SherlockListFragment {
@@ -187,77 +195,17 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 		}
 
-		@Override
-		public void onListItemClick(ListView l, View v, int position, long id) {
-
-		}
-
-		
+		/*chamada indirectamente pelo onClick do twitter*/
 		public static void shareTwitter(View v, Context ctx){
-
-			//buttonLogin(v);
-			//buttonTweet(v);
-			//Intent intent = new Intent(this, TwitterActivity.class );
+			
 			Intent intent = new Intent(ctx, ComposeMessagePopUpActivity.class );
 			
+			/*dados para enviar para o hint do tweet*/
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
-			intent.putExtra("rating", ratings.get(0));
-			
-			Log.d("title", titles.get(0));
-			Log.d("author", authors.get(0));
-			Log.d("rating", ratings.get(0));
+			intent.putExtra("rating", ratings.get(0));;
 			
 			ctx.startActivity(intent);
 		}
-		
-		/*@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-			Bundle b= super.getArguments();
-
-			String id = b.getString("id");
-			String author= b.getString("author");
-			String page_count= b.getString("page_count");
-			String rating= b.getString("rating");
-			String cover= b.getString("cover");
-			String description = b.getString("description");
-
-			searchIt("https://www.googleapis.com/books/v1/volumes/"+id+"?key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
-
-			//View v = inflater.inflate(R.layout.book_view, container, false);
-
-			ImageView book_cover =(ImageView)v.findViewById(R.id.book_cover);
-			TextView book_author = (TextView) v.findViewById(R.id.book_author);
-			TextView book_page_count = (TextView) v.findViewById(R.id.book_page_count);
-			//TextView book_rating = (TextView) v.findViewById(R.id.book_rating); //placeholder
-			TextView book_summary = (TextView) v.findViewById(R.id.book_summary);
-
-			RatingBar book_rating_bar = (RatingBar) v.findViewById(R.id.book_rating_bar);
-			TextView book_rating_text = (TextView) v.findViewById(R.id.book_rating_text);
-
-			if(!rating.equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
-				book_rating_bar.setRating(Float.parseFloat(rating));
-				book_rating_bar.setVisibility(View.VISIBLE);
-				book_rating_text.setVisibility(View.GONE);
-			}
-			else
-			{
-				book_rating_text.setText(rating);
-				book_rating_bar.setVisibility(View.GONE);
-				book_rating_text.setVisibility(View.VISIBLE);
-			}
-
-			book_author.setText(author);
-			book_page_count.setText(page_count+" pages");
-			//book_rating.setText(rating);
-			//book_rating_bar.setRating(Float.parseFloat(rating));
-			book_summary.setText(description);
-
-			imageLoader=new ImageLoader(this.getActivity().getApplicationContext());
-			imageLoader.DisplayImage(cover, book_cover,"thumbnail");
-
-			return v;
-		}*/
 	}
 }

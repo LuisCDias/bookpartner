@@ -21,7 +21,7 @@
             <ImageView
                 android:id="@+id/book_cover"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:adjustViewBounds="true"
                 android:clickable="true"
@@ -31,7 +31,7 @@
             <LinearLayout
                 android:id="@+id/book_data_layout"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:background="@drawable/layoutstyle"
                 android:gravity="left"
@@ -44,7 +44,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.25"
                     android:gravity="left"
                     android:text="Author"
                     android:textColor="@color/white"
@@ -57,11 +57,11 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.15"
                     android:gravity="left"
                     android:text="Page Count"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
 
                 <!-- when rating is available -->
 

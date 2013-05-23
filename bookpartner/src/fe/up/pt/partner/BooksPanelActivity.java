@@ -1,6 +1,7 @@
 package fe.up.pt.partner;
 
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -109,8 +110,8 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 			// start the search with the appropriate searchable activity
 			// so we get the correct search hint in the search dialog
 			Bundle b = new Bundle();
-			b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			//searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
+			//b.putString(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
+			searchManager.startSearch(null, false,new ComponentName(this, SearchableActivity.class), b, false);
 			return true;
 		}
 		return false;
@@ -127,15 +128,9 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 	}
 
 	public void shareTwitter(View v){
-
-		//buttonLogin(v);
-		//buttonTweet(v);
-		//Intent intent = new Intent(this, TwitterActivity.class );
-		//Intent intent = new Intent(this, ComposeMessagePopUpActivity.class );
 		
+		/*chama a função para lançar actividade no fragmento*/
 		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareTwitter(v, this);
-		
-		//startActivity(intent);
 	}
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 

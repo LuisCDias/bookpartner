@@ -62,7 +62,7 @@ public class ComposeMessagePopUpActivity extends Activity {
 		EditText tweet_text = (EditText) vi.findViewById(R.id.tweet_text);
 		
 		final String tweet_message = "Great book: "+title+" by "+author+"! "+
-							   "Average rating of "+rating+"! on BookPartner";
+							   "Average rating of "+rating+"* on BookPartner!";
 		tweet_text.setHint(tweet_message);
 		
 		Button okBtn = (Button) vi.findViewById(R.id.composePopUpYesBtn);
