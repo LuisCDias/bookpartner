@@ -132,6 +132,14 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		/*chama a função para lançar actividade no fragmento*/
 		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareTwitter(v, this);
 	}
+	
+	public void shareFacebook(View v){
+		
+		Intent intent = new Intent(this, FacebookActivity.class);
+	    
+	    startActivity(intent);
+		
+	}
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
 

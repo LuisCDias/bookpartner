@@ -95,16 +95,36 @@
                     android:textSize="14dp"
                     android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/twitter_ic"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:adjustViewBounds="true"
-                    android:layout_marginTop="50dp"
-                    android:clickable="true"
-                    android:gravity="bottom"
-                    android:onClick="shareTwitter"
-                    android:src="@drawable/twitter_button" />
+                <LinearLayout
+		            android:id="@+id/book_info_layout"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginTop="5dp"
+		            android:background="@drawable/layoutstyle"
+		            android:gravity="bottom"
+		            android:orientation="horizontal" >
+		            
+		                <ImageView
+		                    android:id="@+id/twitter_ic"
+		                    android:layout_width="35dp"
+		                    android:layout_height="35dp"
+		                    android:adjustViewBounds="true"
+		                    android:layout_marginTop="50dp"
+		                    android:clickable="true"
+		                    android:gravity="bottom"
+		                    android:onClick="shareTwitter"
+		                    android:src="@drawable/twitter_button" />
+		                <ImageView
+		                    android:id="@+id/facebook_ic"
+		                    android:layout_width="35dp"
+		                    android:layout_height="35dp"
+		                    android:adjustViewBounds="true"
+		                    android:layout_marginTop="50dp"
+		                    android:clickable="true"
+		                    android:gravity="bottom"
+		                    android:onClick="shareFacebook"
+		                    android:src="@drawable/facebook_button" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

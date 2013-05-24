@@ -1,6 +1,5 @@
 package fe.up.pt.partner;
 
-import oauth2.OAuthAccessTokenActivity;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;

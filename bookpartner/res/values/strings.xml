@@ -11,8 +11,14 @@
     <string name="search_activitty">search_activity</string>
     <string name="search_something">Type book title</string>
     <string name="title_activity_full_cover">FullCoverActivity</string>
+    <string name="title_activity_facebook">FacebookActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="tweet_text">Tweet this book!</string>
-
+    <string name="hello_user">Hello %1$s!</string>
+    <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
+    <string name="error">Error</string>
+    <string name="status_update">Updating status for %1$s at %2$s</string>
+    <string name="app_id">355198514515820</string>
+<!-- 153608521488227 -->
 </resources>
