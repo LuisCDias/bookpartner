@@ -267,7 +267,7 @@ public class FacebookActivity extends FragmentActivity {
     private void postStatusUpdate() {
         if (user != null && hasPublishPermission()) {
         	//Alterar a mensagem 
-            final String message = "Great book: "+title + " by "+ author + "! Avarage rating of "+rating;
+            final String message = "Great book: "+title + " by "+ author + "! Average rating of "+rating;
             
             /*
              * Great book: A Game of Thrones (A Song of Ice and Fire, Book 1) 
