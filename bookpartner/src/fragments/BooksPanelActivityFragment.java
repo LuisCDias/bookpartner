@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import fe.up.pt.partner.BooksPanelActivity;
 import fe.up.pt.partner.ComposeMessagePopUpActivity;
+import fe.up.pt.partner.FacebookActivity;
 import fe.up.pt.partner.PartnerAPI;
 import fe.up.pt.partner.R;
 import fragments.MainFragment_Recent.MainFragment_Recent_Aux;
@@ -194,7 +195,20 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 
 		}
-
+		
+		/*chamada indirectamente pelo onClick do twitter*/
+		public static void shareFacebook(View v, Context ctx){
+			
+			Intent intent = new Intent(ctx, FacebookActivity.class );
+			
+			/*dados para enviar para o hint do tweet*/
+			intent.putExtra("title", titles.get(0));
+			intent.putExtra("author", authors.get(0));
+			intent.putExtra("rating", ratings.get(0));;
+			
+			ctx.startActivity(intent);
+		}
+		
 		/*chamada indirectamente pelo onClick do twitter*/
 		public static void shareTwitter(View v, Context ctx){
 			

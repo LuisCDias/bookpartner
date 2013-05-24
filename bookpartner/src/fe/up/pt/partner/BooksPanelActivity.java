@@ -119,7 +119,7 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 
 	public void openFullCover(View v){
 
-		Intent intent = new Intent(this, FullCoverActivity.class );
+		Intent intent = new Intent(this, FullCoverActivity.class);
 		
 		String cover = extras.getString("cover");
 		intent.putExtra("cover", cover);
@@ -135,9 +135,7 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 	
 	public void shareFacebook(View v){
 		
-		Intent intent = new Intent(this, FacebookActivity.class);
-	    
-	    startActivity(intent);
+		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareFacebook(v, this);
 		
 	}
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {

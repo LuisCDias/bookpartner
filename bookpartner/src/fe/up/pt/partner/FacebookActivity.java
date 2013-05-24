@@ -54,10 +54,13 @@ public class FacebookActivity extends FragmentActivity {
     private PendingAction pendingAction = PendingAction.NONE;
     private ViewGroup controlsContainer;
     private GraphUser user;
+    
+    public String title;
+	public String author;
+	public String rating;
 
     private enum PendingAction {
         NONE,
-        POST_PHOTO,
         POST_STATUS_UPDATE
     }
     private UiLifecycleHelper uiHelper;
@@ -75,6 +78,10 @@ public class FacebookActivity extends FragmentActivity {
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
 
+        Bundle b= getIntent().getExtras();
+        title = b.getString("title");
+		author = b.getString("author");
+		rating = b.getString("rating");
             
         /*
          * este bloco é para imprimir a ash para depois se colocar no
@@ -82,7 +89,7 @@ public class FacebookActivity extends FragmentActivity {
          */
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.facebook.samples.hellofacebook", 
+                    "fe.up.pt.partner", 
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -125,6 +132,7 @@ public class FacebookActivity extends FragmentActivity {
         postStatusUpdateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onClickPostStatusUpdate();
+                
             }
         });
 
@@ -247,6 +255,9 @@ public class FacebookActivity extends FragmentActivity {
                 .setMessage(alertMessage)
                 .setPositiveButton("OK", null)
                 .show();
+        /* Este finish faz o coiso voltar à actividade anterior mas provoca um erro.
+         * Mas dá na mesma. Mas coiso... */
+        //finish();
     }
 
     private void onClickPostStatusUpdate() {
@@ -255,7 +266,13 @@ public class FacebookActivity extends FragmentActivity {
 
     private void postStatusUpdate() {
         if (user != null && hasPublishPermission()) {
-            final String message = getString(R.string.status_update, user.getFirstName(), (new Date().toString()));
+        	//Alterar a mensagem 
+            final String message = "Great book: "+title + " by "+ author + "! Avarage rating of "+rating;
+            
+            /*
+             * Great book: A Game of Thrones (A Song of Ice and Fire, Book 1) 
+             * by George R. R. Martin! Average rating of 4.0* on BookPartner!
+             */
             Request request = Request
                     .newStatusUpdateRequest(Session.getActiveSession(), message, new Request.Callback() {
                         @Override
