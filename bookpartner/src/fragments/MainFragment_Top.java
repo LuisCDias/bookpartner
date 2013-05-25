@@ -61,7 +61,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					Log.d("topURLjson", results[0].toString());
+					//Log.d("topURLjson", results[0].toString());
 					//JSONObject book = (JSONObject) results[0];
 
 					JSONArray items = (JSONArray) results[0];
@@ -72,6 +72,10 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 					covers = new ArrayList<String>();
 
 					int i = 0;
+					
+					/*
+					 * TODO Apagar este x depois do webservice só devolver 10 resultados 
+					 */
 					int x =0;
 
 					try {
@@ -94,8 +98,12 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
 							
-							if(item.has("averageRating"))
-								ratings.add(item.getString("averageRating"));
+							if(item.has("averageRating")){
+								if(!item.getString("averageRating").equals("null"))
+									ratings.add(item.getString("averageRating"));
+								else
+									ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+							}
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 
