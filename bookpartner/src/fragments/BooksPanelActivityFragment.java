@@ -193,7 +193,6 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			//AsyncTasks to search something
 			searchIt("https://www.googleapis.com/books/v1/volumes/"+id+"?key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 
-
 		}
 		
 		/*chamada indirectamente pelo onClick do twitter*/

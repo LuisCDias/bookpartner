@@ -20,7 +20,6 @@ public class ListAdapter extends BaseAdapter {
     private ArrayList<String> titles;
     private ArrayList<String> ids;
     private ArrayList<String> authors;
-    private ArrayList<String> page_counts;
 	private ArrayList<String> ratings;
 	private ArrayList<String> covers;
     
@@ -28,12 +27,11 @@ public class ListAdapter extends BaseAdapter {
     public ImageLoader imageLoader; 
     
     public ListAdapter(Activity a, ArrayList<String> tit, ArrayList<String> i, ArrayList<String> au,
-    				   ArrayList<String> rat, ArrayList<String> pc, ArrayList<String> cov) {
+    				   ArrayList<String> rat, ArrayList<String> cov) {
         activity = a;
         titles=tit;
         ids = i;
         authors = au;
-        page_counts = pc;
         ratings = rat;
         covers = cov;
         
