@@ -16,25 +16,77 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:facebook="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:background="#FFF"
-        >
-    <LinearLayout android:orientation="vertical"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:background="#FFF"
-                  android:id="@+id/main_ui_container">
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layoutstyle"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/main_ui_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layoutstyle"
+        android:orientation="horizontal" >
+
+        <com.facebook.widget.ProfilePictureView
+            android:id="@+id/profilePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            facebook:preset_size="normal" />
+
         <com.facebook.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                facebook:confirm_logout="false"
-                facebook:fetch_user_info="true"
-                />
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            facebook:confirm_logout="false"
+            facebook:fetch_user_info="true" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/share_text"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="Write your message..."
+        android:inputType="text"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layoutstyle"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/postStatusUpdateButton"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Share"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!--
         <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -63,11 +115,6 @@
                     android:text="Post Status Update"
                     />
         </LinearLayout>
-    </LinearLayout>
-    <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
+    -->
 
 </LinearLayout>
-

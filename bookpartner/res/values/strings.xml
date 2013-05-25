@@ -15,6 +15,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="tweet_text">Tweet this book!</string>
+    <string name="share_text">Share this book!</string>
     <string name="hello_user">Hello %1$s!</string>
     <string name="successfully_posted_post">Successfully posted \'%1$s\'.\nPost ID: %2$s</string>
     <string name="error">Error</string>

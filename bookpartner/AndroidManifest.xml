@@ -77,7 +77,10 @@
         
         <activity
             android:name="fe.up.pt.partner.FacebookActivity"
-            android:label="@string/title_activity_facebook" >
+            android:label="@string/share_text" 
+            android:theme="@android:style/Theme.Dialog"
+            >
+            
         </activity>
 
         <activity

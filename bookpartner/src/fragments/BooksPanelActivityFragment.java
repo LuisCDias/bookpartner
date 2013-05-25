@@ -199,8 +199,8 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 		/*chamada indirectamente pelo onClick do twitter*/
 		public static void shareFacebook(View v, Context ctx){
 			
+			//Intent intent = new Intent(ctx, FacebookActivity.class );
 			Intent intent = new Intent(ctx, FacebookActivity.class );
-			
 			/*dados para enviar para o hint do tweet*/
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
@@ -215,6 +215,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			Intent intent = new Intent(ctx, ComposeMessagePopUpActivity.class );
 			
 			/*dados para enviar para o hint do tweet*/
+
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
 			intent.putExtra("rating", ratings.get(0));;

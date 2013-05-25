@@ -54,7 +54,6 @@ public class TwitterActivity extends Activity{
 		b = getIntent().getExtras();
 		
 		
-		
 		// Create a new shared preference object to remember if the user has
 		// already given us permission
 		mPrefs = getSharedPreferences("twitterPrefs", MODE_PRIVATE);
@@ -230,8 +229,8 @@ public class TwitterActivity extends Activity{
 		try {
 			b = getIntent().getExtras();
 			
-			Log.d("texto tweet", b.getString("tweet").length()+"");
-			String texto = b.getString("tweet");
+			Log.d("texto tweet", b.getString("texto").length()+"");
+			String texto = b.getString("texto");
 			
 			
 			mTwitter.updateStatus(texto);

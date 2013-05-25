@@ -59,8 +59,10 @@ public class PartnerAPI {
     	String NO_AUTHOR_AVAILABLE = "Unknown author";
     	String NO_COVER_AVAILABLE = "Thumbnail";
     	String NO_DESCRIPTION_AVAILABLE = "No description available";
-    	
     	String NOT_AVAILABLE = "N/A";
+    	String FACEBOOK_POPUP_TITLE = "Share on facebook!";
+    	String TWITTER_POPUP_TITLE = "Tweet this book!";
+    	
     }
     
     public interface Ints{

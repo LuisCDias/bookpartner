@@ -29,6 +29,7 @@ public class ComposeMessagePopUpActivity extends Activity {
 	public String useMode;
 	public String userToken;
 
+	public String type;
 	public String title;
 	public String author;
 	public String rating;
@@ -40,22 +41,25 @@ public class ComposeMessagePopUpActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Bundle b= getIntent().getExtras();
 		
-		title = b.getString("title");
-		author = b.getString("author");
-		rating = b.getString("rating");
-		
+		if(b != null){
+			
+			title = b.getString("title");
+			author = b.getString("author");
+			rating = b.getString("rating");
+		}
 		
 		//useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
 		//if(useMode.equals(PartnerAPI.Strings.USER_MODE))
 		//	userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
 		//popUpFor= b.getString(PartnerAPI.Strings.CONFIRMATION_POPUP_BUNDLE);
 		//user_from_id = b.getString(SixAPI.Strings.USER_ID_BUNDLE);
-		Log.d("entrou com titulo", "compose");
+
 		buildPane(this);
 
 	}
 
 	public void buildPane(final Activity a){
+		
 		final LayoutInflater inflater = (LayoutInflater)a.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View vi =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
 
@@ -67,25 +71,25 @@ public class ComposeMessagePopUpActivity extends Activity {
 		
 		Button okBtn = (Button) vi.findViewById(R.id.composePopUpYesBtn);
 		Button cancelBtn = (Button) vi.findViewById(R.id.composePopUpNoBtn);
-
+		
 		okBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				
 				Intent intent = new Intent(v.getContext(), TwitterActivity.class );
-				
+
 				//v =  inflater.inflate(R.layout.activity_compose_message_pop_up, null);
 				EditText tweet_text = (EditText) vi.findViewById(R.id.tweet_text);
 				String texto = tweet_text.getText().toString();
 				
 				if(texto.matches("")){
-					intent.putExtra("tweet", tweet_message);
+					intent.putExtra("texto", tweet_message);
 				}
 				else{
 					String info = "["+ title + " by "+author+" ("+rating+")]";
 					String novo_texto = texto+"\n"+ info;
-					intent.putExtra("tweet", novo_texto);
+					intent.putExtra("texto", novo_texto);
 				}
 				
 				v.getContext().startActivity(intent);

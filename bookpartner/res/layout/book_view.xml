@@ -118,6 +118,7 @@
 		                    android:id="@+id/facebook_ic"
 		                    android:layout_width="35dp"
 		                    android:layout_height="35dp"
+		                    android:layout_marginLeft="10dp"
 		                    android:adjustViewBounds="true"
 		                    android:layout_marginTop="50dp"
 		                    android:clickable="true"
