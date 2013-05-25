@@ -138,7 +138,7 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 					}
 
 					
-					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
+					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, covers));
 
 				}
 
