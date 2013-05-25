@@ -3,6 +3,7 @@ package fe.up.pt.partner;
 import ListAdapter.ImageLoader;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +19,9 @@ public class FullCoverActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 		
 		String cover = extras.getString("cover");
+		String title = extras.getString("title");
+		
+		this.setTitle(title);
 		
 		ImageView book_cover =(ImageView)findViewById(R.id.full_book_cover);
 		imageLoader=new ImageLoader(this.getApplicationContext());

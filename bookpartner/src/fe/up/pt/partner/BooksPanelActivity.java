@@ -42,12 +42,11 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 	Bundle extras ;
 	public String userToken;
 	public String useMode ;
-	
+	String title;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		String title = null;
 		extras= getIntent().getExtras();
 		if(extras!=null){
 			title = extras.getString("title");
@@ -123,6 +122,7 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		
 		String cover = extras.getString("cover");
 		intent.putExtra("cover", cover);
+		intent.putExtra("title", title);
 		
 		startActivity(intent);
 	}
