@@ -62,7 +62,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					//Log.d("jsonRecent", results[0].toString());
+					Log.d("jsonRecent", results[0].toString());
 					//JSONObject items = (JSONObject) results[0];
 
 					JSONArray items = (JSONArray) results[0];
@@ -81,7 +81,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 
 						//JSONArray items = book.getJSONArray("items");
 						while (!items.isNull(i) && x < 10) {
-							
+
 							JSONObject item = items.getJSONObject(i);
 
 							ids.add(item.getString("id"));
@@ -96,7 +96,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 							}
 							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-							
+
 							if(item.has("averageRating")){
 								if(!item.getString("averageRating").equals("null"))
 									ratings.add(item.getString("averageRating"));
@@ -143,12 +143,13 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
 
+			Bundle b = super.getArguments();
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
+			
 			//AsyncTasks to search something
-			searchIt("http://bookpartnerapi.herokuapp.com/books?q=a+song+of+ice+and+fire");
-
+			searchIt("http://bookpartnerapi.herokuapp.com/books?q=&title=&ord=date");
 
 		}
 

@@ -67,6 +67,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 		private ArrayList<String> covers;
 		private ArrayList<String> covers_hd;
 		private ArrayList<String> descriptions;
+		private ArrayList<String> dates;
 
 		private void searchIt(String URL) {
 			Log.d("url", URL);
@@ -88,7 +89,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 					covers = new ArrayList<String>();
 					covers_hd = new ArrayList<String>();
 					descriptions = new ArrayList<String>();
-
+					dates = new ArrayList<String>();	
 
 					try {
 
@@ -115,7 +116,12 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 							ratings.add(volumeInfo.getString("averageRating"));
 						else
 							ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
-
+						
+						if(volumeInfo.has("publishedDate"))
+							dates.add(volumeInfo.getString("publishedDate"));
+						else
+							dates.add(PartnerAPI.Strings.NOT_AVAILABLE);
+						
 						/* Para evitar o facto de poder vir com uma descrição vazia,
 						 * ou não ter.*/
 						if(volumeInfo.has("description")){
@@ -150,7 +156,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 					}
 
 
-					setListAdapter(new BookAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers, descriptions));
+					setListAdapter(new BookAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers, descriptions, dates));
 
 				}
 

@@ -52,6 +52,7 @@
     <EditText
         android:id="@+id/share_text"
         android:layout_width="fill_parent"
+        android:singleLine="false"
         android:layout_height="150dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"

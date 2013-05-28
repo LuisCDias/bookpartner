@@ -61,7 +61,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					//Log.d("topURLjson", results[0].toString());
+					Log.d("topURLjson", results[0].toString());
 					//JSONObject book = (JSONObject) results[0];
 
 					JSONArray items = (JSONArray) results[0];
@@ -72,7 +72,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 					covers = new ArrayList<String>();
 
 					int i = 0;
-					
+
 					/*
 					 * TODO Apagar este x depois do webservice só devolver 10 resultados 
 					 */
@@ -82,7 +82,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 						//JSONArray items = book.getJSONArray("items");
 						while (!items.isNull(i) && x < 10) {
-							
+
 							JSONObject item = items.getJSONObject(i);
 
 							ids.add(item.getString("id"));
@@ -97,7 +97,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							}
 							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-							
+
 							if(item.has("averageRating")){
 								if(!item.getString("averageRating").equals("null"))
 									ratings.add(item.getString("averageRating"));
@@ -117,16 +117,15 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 						}
 						/*Todos os arrays estão preenchidos. Agora terão de ser ordenados por rating*/
 						/*Isto devia TODO e vai ser feito no servidor, porque aqui é estúpido*/
-						
-						
+
+
 
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
 
-					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, 
-								ratings, covers));
+					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, covers));
 
 				}
 
@@ -153,7 +152,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 			//AsyncTasks to search something
 			//searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
-			searchIt("http://bookpartnerapi.herokuapp.com/books?q=magician");
+			searchIt("http://bookpartnerapi.herokuapp.com/books?q=&title=&ord=class");
 
 		}
 

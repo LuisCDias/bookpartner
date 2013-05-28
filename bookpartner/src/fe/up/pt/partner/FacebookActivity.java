@@ -94,7 +94,7 @@ public class FacebookActivity extends FragmentActivity {
 		/*
 		 * este bloco é para imprimir a ash para depois se colocar no
 		 * site da app no facebook 
-
+		*/
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "fe.up.pt.partner", 
@@ -108,7 +108,7 @@ public class FacebookActivity extends FragmentActivity {
 
         } catch (NoSuchAlgorithmException e) {
 
-        } */
+        } 
 
 
 		if (savedInstanceState != null) {

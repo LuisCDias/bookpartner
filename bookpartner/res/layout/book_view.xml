@@ -22,7 +22,7 @@
                 android:id="@+id/book_cover"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:clickable="true"
                 android:onClick="openFullCover"
@@ -32,7 +32,8 @@
                 android:id="@+id/book_data_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/layoutstyle"
                 android:gravity="left"
                 android:orientation="vertical" >
@@ -43,10 +44,11 @@
                     android:layout_height="0dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="0.25"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="0.20"
                     android:gravity="left"
-                    android:text="Author"
+                    android:text="Author with really big name"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
@@ -56,28 +58,120 @@
                     android:layout_height="0dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="0.15"
+                   
+                    android:layout_weight="0.10"
                     android:gravity="left"
                     android:text="Page Count"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
-                <!-- when rating is available -->
-
-                <RatingBar
-                    android:id="@+id/book_rating_bar"
-                    style="?android:attr/ratingBarStyleSmall"
+                <TextView
+                    android:id="@+id/book_publish_date"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.10"
+                    android:gravity="left"
+                    android:text="Publish date"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <!-- when rating is available -->
+
+                <LinearLayout
+                    android:id="@+id/google_rating_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="0.1"
-                    android:numStars="5"
-                    android:rating="0"
-                    android:visibility="visible" />
+                    android:background="@drawable/layoutstyle"
+                    android:gravity="left"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/google_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="5dp"
+                        android:clickable="false"
+                        android:src="@drawable/google_logo" />
+
+                    <RatingBar
+                        android:id="@+id/book_rating_bar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:numStars="5"
+                        android:rating="0"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/goodreads_rating_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/layoutstyle"
+                    android:gravity="left"
+                    android:orientation="horizontal" >
+					
+                    <ImageView
+                        android:id="@+id/google_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="5dp"
+                        android:clickable="false"
+                        android:src="@drawable/goodreads_logo" />
+                    
+                    <RatingBar
+                        android:id="@+id/book_rating_bar_goodreads"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:numStars="5"
+                        android:rating="0"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/overall_rating_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/layoutstyle"
+                    android:gravity="left"
+                    android:orientation="horizontal" >
+					
+                    <ImageView
+                        android:id="@+id/google_logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="5dp"
+                        android:clickable="false"
+                        android:src="@drawable/default_book" />
+                    
+                    <RatingBar
+                        android:id="@+id/book_rating_bar_overall"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:numStars="5"
+                        android:rating="0"
+                        android:visibility="visible" />
+                </LinearLayout>
 
                 <!-- when no rating is available -->
 
@@ -88,54 +182,58 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="0.1"
+                    android:layout_weight="0.3"
                     android:gravity="left"
                     android:text="No rating available"
                     android:textColor="@color/white"
                     android:textSize="14dp"
                     android:visibility="gone" />
+                <!--  -->
 
                 <LinearLayout
-		            android:id="@+id/book_info_layout"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginTop="5dp"
-		            android:background="@drawable/layoutstyle"
-		            android:gravity="bottom"
-		            android:orientation="horizontal" >
-		            
-                    	<TextView
-		                    android:id="@+id/book_rating_text"
-		                    android:layout_width="wrap_content"
-		                    android:layout_height="wrap_content"
-		                    android:layout_marginBottom="3dp"
-		                    android:gravity="left"
-		                    android:text="Share: "
-		                    android:textColor="@color/white"
-		                    android:textSize="18dp" />
-                    
-		                <ImageView
-		                    android:id="@+id/twitter_ic"
-		                    android:layout_width="35dp"
-		                    android:layout_height="35dp"
-		                    android:adjustViewBounds="true"
-		                    android:layout_marginLeft="5dp"
-		                    android:layout_marginTop="50dp"
-		                    android:clickable="true"
-		                    android:gravity="bottom"
-		                    android:onClick="shareTwitter"
-		                    android:src="@drawable/twitter_button" />
-		                <ImageView
-		                    android:id="@+id/facebook_ic"
-		                    android:layout_width="35dp"
-		                    android:layout_height="35dp"
-		                    android:layout_marginLeft="10dp"
-		                    android:adjustViewBounds="true"
-		                    android:layout_marginTop="50dp"
-		                    android:clickable="true"
-		                    android:gravity="bottom"
-		                    android:onClick="shareFacebook"
-		                    android:src="@drawable/facebook_button" />
+                    android:id="@+id/book_share_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.30"
+                    android:background="@drawable/layoutstyle"
+                    android:gravity="bottom"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/book_rating_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="left"
+                        android:text="Share: "
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/twitter_ic"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="50dp"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:gravity="bottom"
+                        android:onClick="shareTwitter"
+                        android:src="@drawable/twitter_button" />
+
+                    <ImageView
+                        android:id="@+id/facebook_ic"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="50dp"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:gravity="bottom"
+                        android:onClick="shareFacebook"
+                        android:src="@drawable/facebook_button" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

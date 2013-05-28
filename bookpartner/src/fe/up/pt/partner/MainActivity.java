@@ -40,8 +40,9 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	String userRating;
 	String userName;
 	String title;
-	Bundle extras;
-
+	Bundle extras_top;
+	Bundle extras_recent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,11 +59,16 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+		extras_recent = new Bundle();
+		extras_top = new Bundle();
+		extras_recent.putString("order", "date");
+		extras_top.putString("order", "class");
+		
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
-				MainFragment_Top.MainFragment_Top_Aux.class, null);
+				MainFragment_Top.MainFragment_Top_Aux.class, extras_top);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
-				MainFragment_Recent.MainFragment_Recent_Aux.class, null);
+				MainFragment_Recent.MainFragment_Recent_Aux.class, extras_recent);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Genre"),
 				MainFragment_Genres.MainFragment_Genres_Aux.class, null);
 		mActionBar.setSelectedNavigationItem(1);

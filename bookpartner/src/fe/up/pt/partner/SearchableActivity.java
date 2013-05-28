@@ -35,7 +35,7 @@ public class SearchableActivity extends SherlockFragmentActivity {
 		setContentView(mViewPager);
 
 		mActionBar = getSupportActionBar();
-		mActionBar.setDisplayShowTitleEnabled(false);
+		mActionBar.setDisplayShowTitleEnabled(true);
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -56,21 +56,43 @@ public class SearchableActivity extends SherlockFragmentActivity {
 			search_query=  doSearchWithIntent(queryIntent);
 		}
 		
-
+		
 		Log.d("query", search_query);
 
 		//String query_from_Bundle = b.getString("query_from_Bundle");
-
+		
 		Bundle b_query = new Bundle();
+		Bundle b_query_top = new Bundle();
+		Bundle b_query_recent = new Bundle();
+		
 		b_query.putString("search_query", search_query); //query keywords
-
-
-		String actionBarTitle = "Results For '"+ search_query +"'";
-
+		b_query_top.putString("search_query", search_query); //query keywords
+		b_query_top.putString("order","class");
+		b_query_recent.putString("search_query", search_query); //query keywords
+		b_query_recent.putString("order","date");
+		
+		
+		search_query = removeLastBlack(search_query);
+		String actionBarTitle = "Results for '"+ search_query +"'";
+		
+		this.setTitle(actionBarTitle);
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
-		mTabsAdapter.addTab(mActionBar.newTab().setText(actionBarTitle),
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
+				SearchableActivityFragment.SearchableActivityFragmentAux.class, b_query_recent);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("All"),
 				SearchableActivityFragment.SearchableActivityFragmentAux.class, b_query);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
+				SearchableActivityFragment.SearchableActivityFragmentAux.class, b_query_top);
+		mActionBar.setSelectedNavigationItem(1);
+		
+	}
 
+	private String removeLastBlack(String str) {
+
+		if (str.length() > 0 && str.charAt(str.length()-1)==' ') {
+		    str = str.substring(0, str.length()-1);
+		  }
+		  return str;
 	}
 
 	/*@Override

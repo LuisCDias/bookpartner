@@ -80,7 +80,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 					try {
 
 						//JSONArray items = book.getJSONArray("items");
-						while (!items.isNull(i) && x < 10) {
+						while (!items.isNull(i)){// && x < 10) {
 							
 							JSONObject item = items.getJSONObject(i);
 
@@ -154,8 +154,12 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 */
 			String terms = b.getString("search_query");
 			String api_ready_terms = terms.replace(" ", "+");
-
-			searchForBook("http://bookpartnerapi.herokuapp.com/books?q="+api_ready_terms);
+			String order = b.getString("order");
+			
+			if(b.containsKey("order"))
+				searchForBook("http://bookpartnerapi.herokuapp.com/books?q="+api_ready_terms+"&ord="+order);
+			else
+				searchForBook("http://bookpartnerapi.herokuapp.com/books?q="+api_ready_terms);
 
 		}
 
