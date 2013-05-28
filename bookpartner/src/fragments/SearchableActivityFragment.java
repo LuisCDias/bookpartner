@@ -62,7 +62,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 					
-					//Log.d("json", results[0].toString());
+					Log.d("json", results[0].toString());
 					//JSONObject book = (JSONObject) results[0];
 					JSONArray items = (JSONArray) results[0];
 					authors = new ArrayList<String>();
@@ -80,8 +80,9 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 					try {
 
 						//JSONArray items = book.getJSONArray("items");
-						while (!items.isNull(i)){// && x < 10) {
-							
+						while (!items.isNull(i)){
+
+
 							JSONObject item = items.getJSONObject(i);
 
 							ids.add(item.getString("id"));
@@ -89,14 +90,20 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 							titles.add(item.getString("title"));
 
 							JSONArray authors_array = new JSONArray();
-							if(item.has("authors")){
+							if(item.getString("authors").equals("null"))
+								Log.d("AUTOR", "é nulo");
+							else
+								Log.d("AUTOR", item.getString("authors"));
+							if(item.has("authors") && !item.getString("authors").equals("null")){
+
 								authors_array = item.getJSONArray("authors");
 								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
 								authors.add(authors_array.get(0).toString());
 							}
-							else
+							else{
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-							
+								Log.d("authors", "null");
+							}
 							if(item.has("averageRating")){
 								if(!item.getString("averageRating").equals("null"))
 									ratings.add(item.getString("averageRating"));
@@ -106,13 +113,12 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 
-							if(item.has("cover"))
+							if(item.has("cover") && !item.getString("cover").equals("null"))
 								covers.add(item.getString("cover"));
 							else
 								covers.add("no cover");
 
 							i++;
-							x++;
 						}
 
 

@@ -73,15 +73,11 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 					int i = 0;
 
-					/*
-					 * TODO Apagar este x depois do webservice só devolver 10 resultados 
-					 */
-					int x =0;
-
 					try {
 
 						//JSONArray items = book.getJSONArray("items");
-						while (!items.isNull(i) && x < 10) {
+						while (!items.isNull(i)){
+
 
 							JSONObject item = items.getJSONObject(i);
 
@@ -90,14 +86,20 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							titles.add(item.getString("title"));
 
 							JSONArray authors_array = new JSONArray();
-							if(item.has("authors")){
+							if(item.getString("authors").equals("null"))
+								Log.d("AUTOR", "é nulo");
+							else
+								Log.d("AUTOR", item.getString("authors"));
+							if(item.has("authors") && !item.getString("authors").equals("null")){
+
 								authors_array = item.getJSONArray("authors");
 								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
 								authors.add(authors_array.get(0).toString());
 							}
-							else
+							else{
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-
+								Log.d("authors", "null");
+							}
 							if(item.has("averageRating")){
 								if(!item.getString("averageRating").equals("null"))
 									ratings.add(item.getString("averageRating"));
@@ -107,17 +109,13 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 
-							if(item.has("cover"))
+							if(item.has("cover") && !item.getString("cover").equals("null"))
 								covers.add(item.getString("cover"));
 							else
 								covers.add("no cover");
 
 							i++;
-							x++;
 						}
-						/*Todos os arrays estão preenchidos. Agora terão de ser ordenados por rating*/
-						/*Isto devia TODO e vai ser feito no servidor, porque aqui é estúpido*/
-
 
 
 					} catch (JSONException e) {
