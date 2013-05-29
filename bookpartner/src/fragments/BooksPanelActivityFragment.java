@@ -80,7 +80,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					Log.d("json", results[0].toString());
+					//Log.d("json", results[0].toString());
 					JSONObject book = (JSONObject) results[0];
 
 					authors = new ArrayList<String>();

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import AsyncTasks.ResponseCommand;
 import AsyncTasks.ResponseCommand.ERROR_TYPE;
 import ListAdapter.ListAdapter;
+import ListAdapter.ReviewsAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,12 +45,10 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 
 	public static class ReviewsFragmentAux extends SherlockListFragment {
 
-		private ArrayList<String> titles;
-		private ArrayList<String> ids;
-		private ArrayList<String> authors;
+		private ArrayList<String> reviewers;
+		private ArrayList<String> dates;
+		private ArrayList<String> texts;
 		
-		Bundle b;
-
 
 		private void searchIt(String URL) {
 			Log.d("url", URL);
@@ -60,31 +59,25 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 				
 				public void onResultReceived(Object... results) {
 
-					Log.d("json", results[0].toString());
-					JSONObject book = (JSONObject) results[0];
-
-					authors = new ArrayList<String>();
-					titles = new ArrayList<String>();
-					ids = new ArrayList<String>();
+					Log.d("REVIEW", results[0].toString());
+					//JSONArray items = (JSONArray) results[0];
+					
+					reviewers = new ArrayList<String>();
+					dates = new ArrayList<String>();
+					texts = new ArrayList<String>();
 
 					int i = 0;
-
+					
 					try {
 						
-						JSONArray items = book.getJSONArray("items");
+						JSONArray items = (JSONArray) results[0];
 						while (!items.isNull(i)) {
 
 							JSONObject item = items.getJSONObject(i);
 							
-							ids.add(item.getString("id"));
-							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
-							titles.add(volumeInfo.getString("title"));
-							
-							JSONArray authors_array = volumeInfo.getJSONArray("authors");
-							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
-							authors.add(authors_array.get(0).toString());
-							
-							Log.d("author",authors_array.get(0).toString());
+							reviewers.add(item.getString("reviewer"));
+							dates.add(item.getString("date"));
+							texts.add(item.getString("text"));
 							i++;
 						}
 						
@@ -92,9 +85,9 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-
 					
-					//setListAdapter(new ListAdapter(getActivity(), titles, ids, authors));
+					
+					setListAdapter(new ReviewsAdapter(getActivity(), reviewers, dates, texts));
 
 				}
 
@@ -112,21 +105,18 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 			// }
 	}
 
-		@Override
 		public void onActivityCreated(Bundle savedInstanceState) {
-			
 			super.onActivityCreated(savedInstanceState);
-			
-			b= super.getArguments();
-			
+
+
+			Bundle b= super.getArguments();
 			String id = b.getString("id");
-			Log.d("ID DA REVIEW", id);
+
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-//			searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
-
+			searchIt("http://bookpartnerapi.herokuapp.com/book/"+id+"/reviews");
 
 		}
 
@@ -134,7 +124,7 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 		public void onListItemClick(ListView l, View v, int position, long id) {
 			
 						
-			String id_book = ids.get(position);
+			/*String id_book = ids.get(position);
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
@@ -146,7 +136,7 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
 			
 			startActivity(intent);
-
+			 */
 		}
 	}
 }

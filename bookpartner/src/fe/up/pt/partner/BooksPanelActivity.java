@@ -52,6 +52,8 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 			title = extras.getString("title");
 		}
 		
+		
+		
 		super.onCreate(savedInstanceState);
 
 		mViewPager = new ViewPager(this);
@@ -69,7 +71,7 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 				ReviewsFragment.ReviewsFragmentAux.class,extras);
 		mTabsAdapter.addTab(mActionBar.newTab().setText(title),
 				BooksPanelActivityFragment.BooksPanelActivityFragmentAux.class,extras);
-		
+
 		mActionBar.setSelectedNavigationItem(1);
 
 	}	
