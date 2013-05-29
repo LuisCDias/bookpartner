@@ -62,7 +62,7 @@ public class MainFragment_Recent extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					Log.d("jsonRecent", results[0].toString());
+					//Log.d("jsonRecent", results[0].toString());
 					//JSONObject items = (JSONObject) results[0];
 
 					JSONArray items = (JSONArray) results[0];
