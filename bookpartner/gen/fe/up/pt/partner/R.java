@@ -1189,7 +1189,7 @@ containing a value of this type.
         public static final int abs__title=0x7f05001d;
         public static final int abs__titleDivider=0x7f05001e;
         public static final int abs__up=0x7f05000d;
-        public static final int action_settings=0x7f050082;
+        public static final int action_settings=0x7f050083;
         public static final int book_author=0x7f050044;
         public static final int book_cover=0x7f050042;
         public static final int book_data_layout=0x7f050043;
@@ -1249,12 +1249,13 @@ containing a value of this type.
         public static final int listMode=0x7f050004;
         public static final int login_button=0x7f050039;
         public static final int main_ui_container=0x7f050079;
-        public static final int menu_login=0x7f050081;
-        public static final int menu_search=0x7f050080;
-        public static final int menu_settings=0x7f05007f;
+        public static final int menu_login=0x7f050082;
+        public static final int menu_search=0x7f050081;
+        public static final int menu_settings=0x7f050080;
         public static final int mysixImg=0x7f05003e;
         public static final int mysixText=0x7f05003f;
         public static final int mysixlayout=0x7f05003d;
+        public static final int no_results=0x7f05007f;
         public static final int normal=0x7f050001;
         public static final int overall_rating_layout=0x7f05004c;
         public static final int pager=0x7f050069;
@@ -1332,8 +1333,9 @@ containing a value of this type.
         public static final int list_genres_normal=0x7f03002c;
         public static final int list_reviews=0x7f03002d;
         public static final int main=0x7f03002e;
-        public static final int sherlock_spinner_dropdown_item=0x7f03002f;
-        public static final int sherlock_spinner_item=0x7f030030;
+        public static final int no_results=0x7f03002f;
+        public static final int sherlock_spinner_dropdown_item=0x7f030030;
+        public static final int sherlock_spinner_item=0x7f030031;
     }
     public static final class menu {
         public static final int activity_lauch=0x7f0c0000;
