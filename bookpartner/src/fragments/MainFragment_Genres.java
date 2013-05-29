@@ -57,56 +57,13 @@ public class MainFragment_Genres extends SherlockFragmentActivity {
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
-			//AsyncTasks to search something
-			//searchIt("https://www.googleapis.com/books/v1/volumes?q=a+song+of+ice+and+fire&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
 			genres.add("Drama,Fantasy,Thriller");
 			genres.add("Science,History,Mystery");
-		
+			genres.add("Romance,Terror,Children");
+			/*TODO ADICIONAR MAIS GENEROS!*/
+			
 			setListAdapter(new GenresListAdapter(getActivity(),genres));
 
-
-		}
-
-		@Override
-		public void onListItemClick(ListView l, View v, int position, long id) {
-			
-			/*String id_book = ids.get(position);
-			String title_book = titles.get(position);
-			String author_book = authors.get(position);
-			String pages_book = page_counts.get(position);
-			String rating_book = ratings.get(position);
-			String cover_book = covers.get(position);
-			String description = descriptions.get(position);
-			
-			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
-
-			intent.putExtra("id", id_book);
-			intent.putExtra("title", title_book);
-			intent.putExtra("author", author_book);
-			intent.putExtra("page_count", pages_book);
-			intent.putExtra("rating", rating_book);
-			intent.putExtra("cover", cover_book);
-			intent.putExtra("description", description);
-			
-			//include the user id
-			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);
-			
-			startActivity(intent);	
-			 */
-		}
-
+		}	
 	}
-	/*public static void openFullCover(View v, Context ctx){
-		
-		switch(v.getId()){
-		
-		case R.id.book_cover:
-			Log.d("BOOK", "COVER");
-			
-			Intent intent = new Intent(ctx, FullCoverActivity.class);
-			v.get
-			break;
-	
-		}
-	}*/
 }

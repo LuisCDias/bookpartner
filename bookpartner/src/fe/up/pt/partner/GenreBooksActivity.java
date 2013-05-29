@@ -132,11 +132,6 @@ public class GenreBooksActivity extends SherlockFragmentActivity implements TabL
 		}
 	}
 
-	
-	/*public void openFullCover(View v){
-		
-		MainFragment_Recent.openFullCover(v, this);
-	}*/
 
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 

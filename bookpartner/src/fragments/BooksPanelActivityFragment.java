@@ -115,7 +115,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 						if(!book.getString("pageCount").equals("null"))
 							page_counts.add(book.getString("pageCount"));
 						else
-							page_counts.add("N/A");
+							page_counts.add(PartnerAPI.Strings.NOT_AVAILABLE);
 						
 						if(!book.getString("googleRating").equals("null"))
 							google_ratings.add(book.getString("googleRating"));

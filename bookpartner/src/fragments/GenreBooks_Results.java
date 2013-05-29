@@ -164,7 +164,7 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-			//searchIt("https://www.googleapis.com/books/v1/volumes?q=a+song+of+ice+and+fire&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
+			searchIt("http://bookpartnerapi.herokuapp.com/genre/mystery");
 
 
 		}
@@ -198,17 +198,4 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 		}
 
 	}
-	/*public static void openFullCover(View v, Context ctx){
-		
-		switch(v.getId()){
-		
-		case R.id.book_cover:
-			Log.d("BOOK", "COVER");
-			
-			Intent intent = new Intent(ctx, FullCoverActivity.class);
-			v.get
-			break;
-	
-		}
-	}*/
 }

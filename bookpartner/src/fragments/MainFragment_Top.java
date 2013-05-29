@@ -141,7 +141,7 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 
 			//AsyncTasks to search something
 			//searchIt("https://www.googleapis.com/books/v1/volumes?q=magician&key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
-			searchIt("http://bookpartnerapi.herokuapp.com/books?q=&title=&ord=class");
+			searchIt("http://bookpartnerapi.herokuapp.com/top");
 
 		}
 
