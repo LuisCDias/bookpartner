@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import AsyncTasks.ResponseCommand;
 import AsyncTasks.ResponseCommand.ERROR_TYPE;
+import ListAdapter.EmptyAdapter;
 import ListAdapter.ListAdapter;
 import ListAdapter.ReviewsAdapter;
 import android.content.Intent;
@@ -60,7 +61,7 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 				public void onResultReceived(Object... results) {
 
 					Log.d("REVIEW", results[0].toString());
-					//JSONArray items = (JSONArray) results[0];
+					JSONArray items2 = (JSONArray) results[0];
 					
 					reviewers = new ArrayList<String>();
 					dates = new ArrayList<String>();
@@ -86,8 +87,10 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 						e.printStackTrace();
 					}
 					
-					
-					setListAdapter(new ReviewsAdapter(getActivity(), reviewers, dates, texts));
+					if(items2.length() == 0)
+						setListAdapter(new EmptyAdapter(getActivity(), 1));
+					else
+						setListAdapter(new ReviewsAdapter(getActivity(), reviewers, dates, texts));
 
 				}
 

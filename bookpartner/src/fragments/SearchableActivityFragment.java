@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import AsyncTasks.ResponseCommand;
+import ListAdapter.EmptyAdapter;
 import ListAdapter.ListAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -111,7 +112,6 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-
 
 					setListAdapter(new ListAdapter(getActivity(), titles, ids, authors, ratings, covers));
 
