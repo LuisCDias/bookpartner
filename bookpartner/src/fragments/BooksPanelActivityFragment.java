@@ -80,7 +80,6 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 				public void onResultReceived(Object... results) {
 
-					//Log.d("json", results[0].toString());
 					JSONObject book = (JSONObject) results[0];
 
 					authors = new ArrayList<String>();
@@ -98,14 +97,14 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 					try {
 
 						ids.add(book.getString("id"));
-						//JSONObject volumeInfo = book.getJSONObject("volumeInfo");
+						
 						titles.add(book.getString("title"));
 
 						JSONArray authors_array = null;
 
 						if(!book.getString("authors").equals("null")){
 							authors_array = book.getJSONArray("authors");
-							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
+							
 							authors.add(authors_array.get(0).toString());
 						}
 						else
@@ -137,8 +136,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 						else
 							dates.add(PartnerAPI.Strings.NOT_AVAILABLE);
 						
-						/* Para evitar o facto de poder vir com uma descrição vazia,
-						 * ou não ter.*/
+
 						if(!book.getString("description").equals("null")){
 							String descripton_clean = cleanDescriptionHtml(book.getString("description"));
 							descriptions.add(descripton_clean);

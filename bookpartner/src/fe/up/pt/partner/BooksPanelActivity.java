@@ -75,31 +75,6 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		mActionBar.setSelectedNavigationItem(1);
 
 	}	
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
-		MenuItem LogInItemMenu = menu.findItem(R.id.menu_login);
-		
-		LogInItemMenu.setTitle(PartnerAPI.Strings.LOGIN);
-		return super.onCreateOptionsMenu(menu);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			// TODO handle clicking the app icon/logo
-			return false;
-		case R.id.menu_search:
-			//startSearch(title, false,null,false);
-			onSearchRequested();
-			return true;
-
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
 	
 	@Override
 	public boolean onSearchRequested() {

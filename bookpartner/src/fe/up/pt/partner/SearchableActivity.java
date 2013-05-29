@@ -45,13 +45,6 @@ public class SearchableActivity extends SherlockFragmentActivity {
 		final Intent queryIntent = getIntent();
 		final String queryAction = queryIntent.getAction();
 
-		Bundle b = queryIntent.getBundleExtra(SearchManager.APP_DATA);
-
-		/*useMode = b.getString(PartnerAPI.Strings.USE_MODE_BUNDLE);
-		if(useMode.equals(PartnerAPI.Strings.USER_MODE))
-			userToken = PreferenceManager.getDefaultSharedPreferences(this).getString(PartnerAPI.Strings.ACCESS_TOKEN, null);
-		 */
-		
 		if (Intent.ACTION_SEARCH.equals(queryAction)) {
 			search_query=  doSearchWithIntent(queryIntent);
 		}
@@ -95,11 +88,6 @@ public class SearchableActivity extends SherlockFragmentActivity {
 		  return str;
 	}
 
-	/*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.activity_main_menu, menu);
-            return true;
-    }*/
 
 	private String doSearchWithIntent(final Intent queryIntent) {
 		final String queryString = queryIntent
