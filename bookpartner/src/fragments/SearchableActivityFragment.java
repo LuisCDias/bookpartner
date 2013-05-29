@@ -72,11 +72,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 					covers = new ArrayList<String>();
 
 					int i = 0;
-					
-					/*
-					 * TODO Apagar este x depois do webservice só devolver 10 resultados 
-					 */
-					int x =0;
+
 					try {
 
 						//JSONArray items = book.getJSONArray("items");

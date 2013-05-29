@@ -95,11 +95,11 @@ public class BookAdapter extends BaseAdapter {
 			book_rating_text.setVisibility(View.GONE);*/
 		}
 		if(!goodreads_ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
-			goodreads_rating_bar.setRating(Float.parseFloat(google_ratings.get(position)));
+			goodreads_rating_bar.setRating(Float.parseFloat(goodreads_ratings.get(position)));
 		}
 		
 		if(!bookpartner_ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
-			overall_rating_bar.setRating(Float.parseFloat(google_ratings.get(position)));
+			overall_rating_bar.setRating(Float.parseFloat(bookpartner_ratings.get(position)));
 		}
 		
 		

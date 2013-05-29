@@ -49,10 +49,8 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 		private ArrayList<String> titles;
 		private ArrayList<String> ids;
 		private ArrayList<String> authors;
-		private ArrayList<String> page_counts;
 		private ArrayList<String> ratings;
 		private ArrayList<String> covers;
-		private ArrayList<String> descriptions;
 
 
 		private void searchIt(String URL) {
@@ -65,70 +63,47 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 				public void onResultReceived(Object... results) {
 
 					Log.d("json", results[0].toString());
-					JSONObject book = (JSONObject) results[0];
+					JSONArray items = (JSONArray) results[0];
 
 					authors = new ArrayList<String>();
 					titles = new ArrayList<String>();
 					ids = new ArrayList<String>();
-					page_counts = new ArrayList<String>();
 					ratings = new ArrayList<String>();
 					covers = new ArrayList<String>();
-					descriptions = new ArrayList<String>();
 
 					int i = 0;
 
 					try {
 						
-						JSONArray items = book.getJSONArray("items");
-						while (!items.isNull(i)) {
+						while (!items.isNull(i)){
+
 
 							JSONObject item = items.getJSONObject(i);
-							
+
 							ids.add(item.getString("id"));
-							JSONObject volumeInfo = item.getJSONObject("volumeInfo");
-							titles.add(volumeInfo.getString("title"));
-							
-							JSONArray authors_array = null;
-							
-							if(volumeInfo.has("authors")){
-								authors_array = volumeInfo.getJSONArray("authors");
-								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
-								authors.add(authors_array.get(0).toString());
+							//JSONObject volumeInfo = item.getJSONObject("volumeInfo");
+							titles.add(item.getString("title"));
+
+							JSONArray authors_array = new JSONArray();
+
+							if(!item.getString("authors").equals("null")){
+								authors_array = item.getJSONArray("authors");
+								authors.add(authors_array.get(0).toString()); //TODO eventualmente ter vários autores
 							}
 							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-									
 							
-							if(volumeInfo.has("pageCount"))
-								page_counts.add(volumeInfo.getString("pageCount"));
-							else
-								page_counts.add("N/A");
-							if(volumeInfo.has("averageRating"))
-								ratings.add(volumeInfo.getString("averageRating"));
+							if(!item.getString("averageRating").equals("null"))
+								ratings.add(item.getString("averageRating"));
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 							
-							/* Para evitar o facto de poder vir com uma descrição vazia,
-							 * ou não ter.*/
-							if(volumeInfo.has("description"))
-								descriptions.add(volumeInfo.getString("description"));
+
+							if(!item.getString("cover").equals("null"))
+								covers.add(item.getString("cover"));
 							else
-								descriptions.add(PartnerAPI.Strings.NO_DESCRIPTION_AVAILABLE);
-							
-							JSONObject image_links = null;
-							if(volumeInfo.has("imageLinks"))
-								image_links = volumeInfo.getJSONObject("imageLinks");
-							
-							if(image_links != null){
-							
-								if(image_links.has("thumbnail")) 
-									covers.add(image_links.getString("thumbnail"));
-								else
-									covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-							}
-							else
-								covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-							
+								covers.add("no cover");
+
 							i++;
 						}
 						
@@ -160,11 +135,16 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
 
+			Bundle b = super.getArguments();
+			
+			String genre = b.getString("genre");
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
-			//AsyncTasks to search something
-			searchIt("http://bookpartnerapi.herokuapp.com/genre/mystery");
+			if(b.containsKey("order"))
+				searchIt("http://bookpartnerapi.herokuapp.com/genre/"+genre);
+			else
+				searchIt("http://bookpartnerapi.herokuapp.com/genre/"+genre); //TODO adicionar ordenacao
 
 
 		}
@@ -175,20 +155,16 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 			String id_book = ids.get(position);
 			String title_book = titles.get(position);
 			String author_book = authors.get(position);
-			String pages_book = page_counts.get(position);
 			String rating_book = ratings.get(position);
 			String cover_book = covers.get(position);
-			String description = descriptions.get(position);
 			
 			Intent intent = new Intent(this.getSherlockActivity(), BooksPanelActivity.class );
 
 			intent.putExtra("id", id_book);
 			intent.putExtra("title", title_book);
 			intent.putExtra("author", author_book);
-			intent.putExtra("page_count", pages_book);
 			intent.putExtra("rating", rating_book);
 			intent.putExtra("cover", cover_book);
-			intent.putExtra("description", description);
 			
 			//include the user id
 			//intent.putExtra(PartnerAPI.Strings.USE_MODE_BUNDLE, useMode);

@@ -27,7 +27,7 @@
             android:onClick="getGenreBooks"
             android:text="Genre title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
         <View
             android:id="@+id/gradient_1"
@@ -47,7 +47,7 @@
             android:onClick="getGenreBooks"
             android:text="Genre title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
 
         <View
             android:id="@+id/gradient_2"
@@ -67,7 +67,7 @@
             android:onClick="getGenreBooks"
             android:text="Genre title"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="18dp" />
     </LinearLayout>
 <!-- 
      <ImageView

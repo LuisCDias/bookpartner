@@ -157,16 +157,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="6dp"
                         android:clickable="false"
-                        android:src="@drawable/default_book" />
+                        android:src="@drawable/logo" />
                     
                     <RatingBar
                         android:id="@+id/book_rating_bar_overall"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="7dp"
                         android:layout_marginRight="5dp"
                         android:numStars="5"
                         android:rating="0"

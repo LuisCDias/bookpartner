@@ -66,11 +66,10 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Reviews"),
-				ReviewsFragment.ReviewsFragmentAux.class,null);
+				ReviewsFragment.ReviewsFragmentAux.class,extras);
 		mTabsAdapter.addTab(mActionBar.newTab().setText(title),
 				BooksPanelActivityFragment.BooksPanelActivityFragmentAux.class,extras);
-		mTabsAdapter.addTab(mActionBar.newTab().setText("Similar"),
-				ReviewsFragment.ReviewsFragmentAux.class,null);
+		
 		mActionBar.setSelectedNavigationItem(1);
 
 	}	

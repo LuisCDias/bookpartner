@@ -57,9 +57,22 @@ public class MainFragment_Genres extends SherlockFragmentActivity {
 			// remove divider
 			this.getListView().setDividerHeight(0);
 
-			genres.add("Drama,Fantasy,Thriller");
-			genres.add("Science,History,Mystery");
-			genres.add("Romance,Terror,Children");
+			
+			
+			
+			
+			genres.add("Art,Adventure,Biography");
+			genres.add("Business,Children,Christian");
+			genres.add("Classics,Comics,Contemporary");
+			genres.add("Cookbooks,Crime,Drama");
+			genres.add("Ebooks,Fantasy,Fiction");
+			genres.add("Horror,History,Humor");
+			genres.add("Music,Mystery,Paranormal");
+			genres.add("Psychology,Religion,Romance");
+			genres.add("Sports,Science,Suspense");
+			genres.add("Terror,Thriller,Travel");
+			
+
 			/*TODO ADICIONAR MAIS GENEROS!*/
 			
 			setListAdapter(new GenresListAdapter(getActivity(),genres));

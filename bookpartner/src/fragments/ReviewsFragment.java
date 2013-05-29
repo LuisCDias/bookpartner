@@ -119,7 +119,8 @@ public class ReviewsFragment extends SherlockFragmentActivity {
 			
 			b= super.getArguments();
 			
-			
+			String id = b.getString("id");
+			Log.d("ID DA REVIEW", id);
 			// remove divider
 			this.getListView().setDividerHeight(0);
 

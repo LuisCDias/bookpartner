@@ -64,9 +64,22 @@ public class GenreBooksActivity extends SherlockFragmentActivity implements TabL
 		mActionBar.setHomeButtonEnabled(true);
 		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+		this.setTitle("Books on '"+title+"'");
+		
+		Bundle b_recent = (Bundle)extras.clone();
+		Bundle b_top = (Bundle)extras.clone();
+		
+		b_top.putString("order", "date");
+		b_recent.putString("order", "class");
+		
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
-		mTabsAdapter.addTab(mActionBar.newTab().setText("Books on '"+title+"'"),
-				GenreBooks_Results.GenreBooks_Results_Aux.class, null);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Recent"),
+				GenreBooks_Results.GenreBooks_Results_Aux.class, b_recent);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("All"),
+				GenreBooks_Results.GenreBooks_Results_Aux.class, extras);
+		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
+				GenreBooks_Results.GenreBooks_Results_Aux.class, b_top);
+		mActionBar.setSelectedNavigationItem(1);
 
 
 	}	
