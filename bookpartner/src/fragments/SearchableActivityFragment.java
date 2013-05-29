@@ -74,8 +74,7 @@ public class SearchableActivityFragment extends SherlockFragmentActivity {
 					int i = 0;
 
 					try {
-
-						//JSONArray items = book.getJSONArray("items");
+						if(items != null)
 						while (!items.isNull(i)){
 
 

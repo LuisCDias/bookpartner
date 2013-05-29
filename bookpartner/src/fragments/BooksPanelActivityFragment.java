@@ -228,7 +228,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			Intent intent = new Intent(ctx, ComposeMessagePopUpActivity.class );
 			
 			/*dados para enviar para o hint do tweet*/
-
+			
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
 			intent.putExtra("rating", bookpartner_ratings.get(0));;
