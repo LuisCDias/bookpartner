@@ -23,7 +23,9 @@ public class BookAdapter extends BaseAdapter {
     private ArrayList<String> titles;
     private ArrayList<String> ids;
     private ArrayList<String> authors;
-    private ArrayList<String> ratings;
+    private ArrayList<String> google_ratings;
+    private ArrayList<String> goodreads_ratings;
+    private ArrayList<String> bookpartner_ratings;
     private ArrayList<String> covers;
     private ArrayList<String> page_counts;
     private ArrayList<String> descriptions;
@@ -36,13 +38,15 @@ public class BookAdapter extends BaseAdapter {
     //BookAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers));
 
     public BookAdapter(Activity a, ArrayList<String> tlt,ArrayList<String> id, ArrayList<String> aut, 
-    		ArrayList<String> rat, ArrayList<String> pag, ArrayList<String> cov, ArrayList<String> des, ArrayList<String> dat) {
+    		ArrayList<String> google_rat, ArrayList<String> good_rat, ArrayList<String> our_rat, ArrayList<String> pag, ArrayList<String> cov, ArrayList<String> des, ArrayList<String> dat) {
     	
         activity = a;
         titles=tlt;
         ids=id;
         authors=aut;
-        ratings = rat;
+        google_ratings = google_rat;
+        goodreads_ratings = good_rat;
+        bookpartner_ratings = our_rat;
         page_counts = pag;
         covers = cov;
         descriptions = des;
@@ -78,33 +82,36 @@ public class BookAdapter extends BaseAdapter {
 		TextView book_summary = (TextView) vi.findViewById(R.id.book_summary);
 		TextView publish_date = (TextView) vi.findViewById(R.id.book_publish_date);
 		
-		RatingBar book_rating_bar = (RatingBar) vi.findViewById(R.id.book_rating_bar);
-		TextView book_rating_text = (TextView) vi.findViewById(R.id.book_rating_text);
-		LinearLayout google_rating_layout = (LinearLayout) vi.findViewById(R.id.google_rating_layout);
-		LinearLayout goodreads_rating_layout = (LinearLayout) vi.findViewById(R.id.goodreads_rating_layout);
-		LinearLayout overall_rating_layout = (LinearLayout) vi.findViewById(R.id.overall_rating_layout);
+		RatingBar google_rating_bar = (RatingBar) vi.findViewById(R.id.book_rating_bar);
+		RatingBar goodreads_rating_bar = (RatingBar) vi.findViewById(R.id.book_rating_bar_goodreads);
+		RatingBar overall_rating_bar = (RatingBar) vi.findViewById(R.id.book_rating_bar_overall);
+				
 		
-		
-		/*SO MOSTRAR OS RATINGS AVAILABLE
-		 * Neste momento apenas verifica o googlebooks, mas vamos ter de ter o rating
-		 * para o goodreads e o nosso rating médio (x*g_books + y*goodreads)/(x+y)
-		 * */
-		
-		if(!ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
-			book_rating_bar.setRating(Float.parseFloat(ratings.get(position)));
-			google_rating_layout.setVisibility(View.VISIBLE);
+		if(!google_ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
+			google_rating_bar.setRating(Float.parseFloat(google_ratings.get(position)));
+			/*google_rating_layout.setVisibility(View.VISIBLE);
 			goodreads_rating_layout.setVisibility(View.VISIBLE);
 			overall_rating_layout.setVisibility(View.VISIBLE);
-			book_rating_text.setVisibility(View.GONE);
+			book_rating_text.setVisibility(View.GONE);*/
 		}
-		else
+		if(!goodreads_ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
+			goodreads_rating_bar.setRating(Float.parseFloat(google_ratings.get(position)));
+		}
+		
+		if(!bookpartner_ratings.get(position).equals(PartnerAPI.Strings.NO_RATING_AVAILABLE)){
+			overall_rating_bar.setRating(Float.parseFloat(google_ratings.get(position)));
+		}
+		
+		
+		
+		/*else
 		{
 			book_rating_text.setText(ratings.get(position));
 			google_rating_layout.setVisibility(View.GONE);
 			goodreads_rating_layout.setVisibility(View.GONE);
 			overall_rating_layout.setVisibility(View.GONE);
 			book_rating_text.setVisibility(View.VISIBLE);
-		}
+		}*/
 		
 		if(!dates.get(position).equals(PartnerAPI.Strings.NOT_AVAILABLE))
 			publish_date.setText(dates.get(position));

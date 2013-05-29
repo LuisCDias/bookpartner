@@ -86,30 +86,21 @@ public class MainFragment_Top extends SherlockFragmentActivity {
 							titles.add(item.getString("title"));
 
 							JSONArray authors_array = new JSONArray();
-							if(item.getString("authors").equals("null"))
-								Log.d("AUTOR", "é nulo");
-							else
-								Log.d("AUTOR", item.getString("authors"));
-							if(item.has("authors") && !item.getString("authors").equals("null")){
 
+							if(!item.getString("authors").equals("null")){
 								authors_array = item.getJSONArray("authors");
-								/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
-								authors.add(authors_array.get(0).toString());
+								authors.add(authors_array.get(0).toString()); //TODO eventualmente ter vários autores
 							}
-							else{
+							else
 								authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
-								Log.d("authors", "null");
-							}
-							if(item.has("averageRating")){
-								if(!item.getString("averageRating").equals("null"))
-									ratings.add(item.getString("averageRating"));
-								else
-									ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
-							}
+							
+							if(!item.getString("averageRating").equals("null"))
+								ratings.add(item.getString("averageRating"));
 							else
 								ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+							
 
-							if(item.has("cover") && !item.getString("cover").equals("null"))
+							if(!item.getString("cover").equals("null"))
 								covers.add(item.getString("cover"));
 							else
 								covers.add("no cover");

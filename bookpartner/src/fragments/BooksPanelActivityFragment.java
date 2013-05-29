@@ -63,7 +63,9 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 		private ArrayList<String> ids;
 		private static ArrayList<String> authors;
 		private ArrayList<String> page_counts;
-		private static ArrayList<String> ratings;
+		private  ArrayList<String> google_ratings;
+		private  ArrayList<String> goodreads_ratings;
+		private static ArrayList<String> bookpartner_ratings;
 		private ArrayList<String> covers;
 		private ArrayList<String> covers_hd;
 		private ArrayList<String> descriptions;
@@ -85,7 +87,9 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 					titles = new ArrayList<String>();
 					ids = new ArrayList<String>();
 					page_counts = new ArrayList<String>();
-					ratings = new ArrayList<String>();
+					google_ratings = new ArrayList<String>();
+					goodreads_ratings = new ArrayList<String>();
+					bookpartner_ratings = new ArrayList<String>();
 					covers = new ArrayList<String>();
 					covers_hd = new ArrayList<String>();
 					descriptions = new ArrayList<String>();
@@ -94,13 +98,13 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 					try {
 
 						ids.add(book.getString("id"));
-						JSONObject volumeInfo = book.getJSONObject("volumeInfo");
-						titles.add(volumeInfo.getString("title"));
+						//JSONObject volumeInfo = book.getJSONObject("volumeInfo");
+						titles.add(book.getString("title"));
 
 						JSONArray authors_array = null;
 
-						if(volumeInfo.has("authors")){
-							authors_array = volumeInfo.getJSONArray("authors");
+						if(!book.getString("authors").equals("null")){
+							authors_array = book.getJSONArray("authors");
 							/*mais do que um author? tratar no webservice, para já placeholder com o primeiro encontrado*/
 							authors.add(authors_array.get(0).toString());
 						}
@@ -108,55 +112,59 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 							authors.add(PartnerAPI.Strings.NO_AUTHOR_AVAILABLE);
 
 
-						if(volumeInfo.has("pageCount"))
-							page_counts.add(volumeInfo.getString("pageCount"));
+						if(!book.getString("pageCount").equals("null"))
+							page_counts.add(book.getString("pageCount"));
 						else
 							page_counts.add("N/A");
-						if(volumeInfo.has("averageRating"))
-							ratings.add(volumeInfo.getString("averageRating"));
-						else
-							ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
 						
-						if(volumeInfo.has("publishedDate"))
-							dates.add(volumeInfo.getString("publishedDate"));
+						if(!book.getString("googleRating").equals("null"))
+							google_ratings.add(book.getString("googleRating"));
+						else
+							google_ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+						
+						if(!book.getString("goodReadsRating").equals("null"))
+							goodreads_ratings.add(book.getString("goodReadsRating"));
+						else
+							goodreads_ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+						
+						if(!book.getString("ourRating").equals("null"))
+							bookpartner_ratings.add(book.getString("ourRating"));
+						else
+							bookpartner_ratings.add(PartnerAPI.Strings.NO_RATING_AVAILABLE);
+						
+						if(!book.getString("publishedDate").equals("null"))
+							dates.add(book.getString("publishedDate"));
 						else
 							dates.add(PartnerAPI.Strings.NOT_AVAILABLE);
 						
 						/* Para evitar o facto de poder vir com uma descrição vazia,
 						 * ou não ter.*/
-						if(volumeInfo.has("description")){
-							String descripton_clean = cleanDescriptionHtml(volumeInfo.getString("description"));
+						if(!book.getString("description").equals("null")){
+							String descripton_clean = cleanDescriptionHtml(book.getString("description"));
 							descriptions.add(descripton_clean);
 						}
 						else
 							descriptions.add(PartnerAPI.Strings.NO_DESCRIPTION_AVAILABLE);
 
-						JSONObject image_links = null;
-						if(volumeInfo.has("imageLinks"))
-							image_links = volumeInfo.getJSONObject("imageLinks");
-
-						if(image_links != null){
-
-							if(image_links.has("thumbnail")) 
-								covers.add(image_links.getString("thumbnail"));
-							else
-								covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-							
-							if(image_links.has("medium"))
-								covers_hd.add(image_links.getString("medium"));
-							else
-								covers_hd.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-						}
+						
+						if(!book.getString("cover").equals("null")) 
+							covers.add(book.getString("cover"));
 						else
 							covers.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
-
+						
+						if(!book.getString("largeCorver").equals("null"))
+							covers_hd.add(book.getString("largeCorver"));
+						else
+							covers_hd.add(PartnerAPI.Strings.NO_COVER_AVAILABLE);
+					
 
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
 
-					setListAdapter(new BookAdapter(getActivity(), titles, ids, authors, ratings, page_counts, covers, descriptions, dates));
+					setListAdapter(new BookAdapter(getActivity(), titles, ids, authors, google_ratings, 
+							goodreads_ratings, bookpartner_ratings,page_counts, covers, descriptions, dates));
 
 				}
 
@@ -197,7 +205,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			this.getListView().setDividerHeight(0);
 
 			//AsyncTasks to search something
-			searchIt("https://www.googleapis.com/books/v1/volumes/"+id+"?key="+PartnerAPI.APIkeys.GOOGLE_BOOKS_KEY);
+			searchIt("http://bookpartnerapi.herokuapp.com/book/"+id);
 
 		}
 		
@@ -209,7 +217,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 			/*dados para enviar para o hint do tweet*/
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
-			intent.putExtra("rating", ratings.get(0));;
+			intent.putExtra("rating", bookpartner_ratings.get(0));;
 			
 			ctx.startActivity(intent);
 		}
@@ -223,7 +231,7 @@ public class BooksPanelActivityFragment extends SherlockFragmentActivity {
 
 			intent.putExtra("title", titles.get(0));
 			intent.putExtra("author", authors.get(0));
-			intent.putExtra("rating", ratings.get(0));;
+			intent.putExtra("rating", bookpartner_ratings.get(0));;
 			
 			ctx.startActivity(intent);
 		}

@@ -1133,19 +1133,20 @@ containing a value of this type.
         public static final int ic_action_search=0x7f020096;
         public static final int ic_launcher=0x7f020097;
         public static final int layoutstyle=0x7f020098;
-        public static final int pressed_background_seis=0x7f020099;
-        public static final int search=0x7f02009a;
-        public static final int search_cinza=0x7f02009b;
-        public static final int settings=0x7f02009c;
-        public static final int settings_cinza=0x7f02009d;
-        public static final int spinner_ab_default_seis=0x7f02009e;
-        public static final int spinner_ab_disabled_seis=0x7f02009f;
-        public static final int spinner_ab_focused_seis=0x7f0200a0;
-        public static final int spinner_ab_pressed_seis=0x7f0200a1;
-        public static final int spinner_background_ab_seis=0x7f0200a2;
-        public static final int star=0x7f0200a3;
-        public static final int twitter_button=0x7f0200a4;
-        public static final int twitter_ic=0x7f0200a5;
+        public static final int logo=0x7f020099;
+        public static final int pressed_background_seis=0x7f02009a;
+        public static final int search=0x7f02009b;
+        public static final int search_cinza=0x7f02009c;
+        public static final int settings=0x7f02009d;
+        public static final int settings_cinza=0x7f02009e;
+        public static final int spinner_ab_default_seis=0x7f02009f;
+        public static final int spinner_ab_disabled_seis=0x7f0200a0;
+        public static final int spinner_ab_focused_seis=0x7f0200a1;
+        public static final int spinner_ab_pressed_seis=0x7f0200a2;
+        public static final int spinner_background_ab_seis=0x7f0200a3;
+        public static final int star=0x7f0200a4;
+        public static final int twitter_button=0x7f0200a5;
+        public static final int twitter_ic=0x7f0200a6;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f050024;
@@ -1198,8 +1199,8 @@ containing a value of this type.
         public static final int book_rating_bar=0x7f050049;
         public static final int book_rating_bar_goodreads=0x7f05004b;
         public static final int book_rating_bar_overall=0x7f05004d;
-        public static final int book_rating_text=0x7f05004e;
-        public static final int book_share_layout=0x7f05004f;
+        public static final int book_rating_text=0x7f05004f;
+        public static final int book_share_layout=0x7f05004e;
         public static final int book_summary=0x7f050053;
         public static final int book_title=0x7f05006b;
         public static final int books_list_layout=0x7f05006a;
