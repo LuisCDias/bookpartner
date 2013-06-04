@@ -42,7 +42,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	String title;
 	Bundle extras_top;
 	Bundle extras_recent;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,7 +63,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 		extras_top = new Bundle();
 		extras_recent.putString("order", "date");
 		extras_top.putString("order", "class");
-		
+
 		mTabsAdapter = new TabsAdapter(this, mViewPager);
 		mTabsAdapter.addTab(mActionBar.newTab().setText("Top"),
 				MainFragment_Top.MainFragment_Top_Aux.class, extras_top);
@@ -75,6 +75,31 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
+		MenuItem LogInItemMenu = menu.findItem(R.id.menu_login);
+
+		LogInItemMenu.setTitle(PartnerAPI.Strings.LOGIN);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// TODO handle clicking the app icon/logo
+			return false;
+		case R.id.menu_search:
+			//startSearch(title, false,null,false);
+			onSearchRequested();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 
 
 	@Override
@@ -83,7 +108,7 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 
 		if(searchManager!=null)
 		{
-			
+
 			// start the search with the appropriate searchable activity
 			// so we get the correct search hint in the search dialog
 			Bundle b = new Bundle();
@@ -113,34 +138,34 @@ public class MainActivity extends SherlockFragmentActivity implements TabListene
 	}
 
 	public void getGenreBooks(View v){
-		
+
 		TextView genre = null;
-		
+
 		switch(v.getId()) {
-			case R.id.genre_title_1:
-				genre = (TextView)v.findViewById(R.id.genre_title_1);
-				Log.d("GENRE", genre.getText()+"");
-								
-				break;
-			case R.id.genre_title_2:
-				genre = (TextView)v.findViewById(R.id.genre_title_2);
-				Log.d("GENRE", genre.getText()+"");
-				
-				break;
-			case R.id.genre_title_3:
-				genre = (TextView)v.findViewById(R.id.genre_title_3);
-				Log.d("GENRE", genre.getText()+"");
-				
-				break;
-				
+		case R.id.genre_title_1:
+			genre = (TextView)v.findViewById(R.id.genre_title_1);
+			Log.d("GENRE", genre.getText()+"");
+
+			break;
+		case R.id.genre_title_2:
+			genre = (TextView)v.findViewById(R.id.genre_title_2);
+			Log.d("GENRE", genre.getText()+"");
+
+			break;
+		case R.id.genre_title_3:
+			genre = (TextView)v.findViewById(R.id.genre_title_3);
+			Log.d("GENRE", genre.getText()+"");
+
+			break;
+
 		}
 		Intent intent = new Intent(this, GenreBooksActivity.class);
 		intent.putExtra("genre", genre.getText()+"");
 		startActivity(intent);
 	}
-	
+
 	/*public void openFullCover(View v){
-		
+
 		MainFragment_Recent.openFullCover(v, this);
 	}*/
 
