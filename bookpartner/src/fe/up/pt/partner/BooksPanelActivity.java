@@ -51,9 +51,9 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		if(extras!=null){
 			title = extras.getString("title");
 		}
-		
-		
-		
+
+
+
 		super.onCreate(savedInstanceState);
 
 		mViewPager = new ViewPager(this);
@@ -75,7 +75,32 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 		mActionBar.setSelectedNavigationItem(1);
 
 	}	
-	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
+		MenuItem LogInItemMenu = menu.findItem(R.id.menu_login);
+
+		LogInItemMenu.setTitle(PartnerAPI.Strings.LOGIN);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// TODO handle clicking the app icon/logo
+			return false;
+		case R.id.menu_search:
+			//startSearch(title, false,null,false);
+			onSearchRequested();
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
 	@Override
 	public boolean onSearchRequested() {
 		SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
@@ -95,24 +120,24 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 	public void openFullCover(View v){
 
 		Intent intent = new Intent(this, FullCoverActivity.class);
-		
+
 		String cover = extras.getString("cover");
 		intent.putExtra("cover", cover);
 		intent.putExtra("title", title);
-		
+
 		startActivity(intent);
 	}
 
 	public void shareTwitter(View v){
-		
+
 		/*chama a função para lançar actividade no fragmento*/
 		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareTwitter(v, this);
 	}
-	
+
 	public void shareFacebook(View v){
-		
+
 		BooksPanelActivityFragment.BooksPanelActivityFragmentAux.shareFacebook(v, this);
-		
+
 	}
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
@@ -128,6 +153,6 @@ public class BooksPanelActivity extends SherlockFragmentActivity implements TabL
 
 
 	}
-	
-	
+
+
 }
