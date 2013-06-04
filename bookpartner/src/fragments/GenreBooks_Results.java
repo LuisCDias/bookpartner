@@ -62,7 +62,7 @@ public class GenreBooks_Results extends SherlockFragmentActivity {
 				
 				public void onResultReceived(Object... results) {
 
-					Log.d("json", results[0].toString());
+					//Log.d("json", results[0].toString());
 					JSONArray items = (JSONArray) results[0];
 
 					authors = new ArrayList<String>();
